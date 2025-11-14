@@ -174,10 +174,10 @@ export default function FooterBlock({ isFull }) {
           <Grid container spacing={2} sx={{ alignItems: 'center' }}>
             <Grid size={{ xs: 12, sm: 8 }}>
               <Typography>
-                © Handcrafted by Team{' '}
+                © All Righ Reserved.{' '}
                 <Link href="https://www.phoenixcoded.net/" target="_blank" underline="none">
                   {' '}
-                  Phoenixcoded
+                  Jendela Kode Indonesia
                 </Link>
               </Typography>
             </Grid>
