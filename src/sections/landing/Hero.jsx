@@ -70,7 +70,7 @@ export default function HeroPage() {
                       lineHeight: 1.2
                     }}
                   >
-                    Explore One of the{' '}
+                    Realizing your digital vision through{' '}
                     <Typography
                       variant="h1"
                       component="span"
@@ -84,9 +84,9 @@ export default function HeroPage() {
                         '@keyframes move-bg': { '100%': { backgroundPosition: '400% 0' } }
                       }}
                     >
-                      Featured Dashboard
+                      reliable and scalable
                     </Typography>{' '}
-                    Template
+                    software development.
                   </Typography>
                 </motion.div>
               </Grid>
@@ -110,13 +110,12 @@ export default function HeroPage() {
                         lineHeight: { xs: 1.4, md: 1.4 }
                       }}
                     >
-                      Able Pro is the one of the finest admin dashboard template out there in market. Used by over 6.5K+ Customers
-                      worldwide.
+                      Powered by expert development teams. Trusted by over 6.5K+ Digital Projects.
                     </Typography>
                   </motion.div>
                 </Grid>
               </Grid>
-              <Grid size={12}>
+              {/* <Grid size={12}>
                 <motion.div
                   initial={{ opacity: 0, y: 550 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -157,7 +156,7 @@ export default function HeroPage() {
                     </Grid>
                   </Grid>
                 </motion.div>
-              </Grid>
+              </Grid> */}
               <Grid size={12}>
                 <motion.div
                   initial={{ opacity: 0, y: 550 }}
@@ -206,7 +205,7 @@ export default function HeroPage() {
                   </Grid>
                 </motion.div>
               </Grid>
-              <Grid container size={12} sx={{ justifyContent: 'center' }}>
+              {/* <Grid container size={12} sx={{ justifyContent: 'center' }}>
                 <Grid size={8}>
                   <motion.div
                     initial={{ opacity: 0, y: 550 }}
@@ -230,7 +229,7 @@ export default function HeroPage() {
                     </Typography>
                   </motion.div>
                 </Grid>
-              </Grid>
+              </Grid> */}
             </Grid>
           </Grid>
         </Grid>
