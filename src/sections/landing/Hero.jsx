@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 // material-ui
 import Grid from '@mui/material/Grid';
-import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import CardMedia from '@mui/material/CardMedia';
 import Links from '@mui/material/Link';
@@ -15,7 +15,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
 // project-imports
-import AnimateButton from 'components/@extended/AnimateButton';
+// import AnimateButton from 'components/@extended/AnimateButton';
 import { techData } from 'data/tech-data';
 import { useBuyNowLink } from 'hooks/getBuyNowLink';
 
