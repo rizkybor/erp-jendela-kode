@@ -7,8 +7,8 @@ import { ThemeMode } from 'config';
 
 // ====================================================================
 // Pastikan Anda telah MENGGANTI PATH ini sesuai dengan lokasi file PNG Anda
-import logoDark from '../../../public/assets/images/landing/logo-jeko-dark.png';
-import logo from '../../../public/assets/images/landing/logo-jeko-white.png';
+// import logoDark from 'assets/images/landing/logo-jeko-dark.png';
+// import logo from 'assets/images/landing/logo-jeko-white.png';
 // ====================================================================
 
 // ==============================|| LOGO IMAGE COMPONENT ||============================== //
@@ -20,8 +20,11 @@ export default function LogoMain({ reverse }) {
   // Jika mode tema saat ini adalah DARK, gunakan logoDark.png, jika tidak, gunakan logo.png.
   // Properti 'reverse' (jika diaktifkan) bisa digunakan sebagai alternatif kontrol mode tema.
   
-  const selectedLogo = theme.palette.mode === ThemeMode.DARK ? logoDark : logo;
-  
+  // const selectedLogo = theme.palette.mode === ThemeMode.DARK ? logoDark : logo;
+const selectedLogo =
+  theme.palette.mode === ThemeMode.DARK
+    ? "/assets/images/landing/logo-jeko-dark.png"
+    : "/assets/images/landing/logo-jeko-white.png";  
   // Jika Anda ingin properti 'reverse' yang MENGGANTIKAN mode tema, gunakan logika ini:
   // const selectedLogo = reverse ? logoDark : logo; 
 
