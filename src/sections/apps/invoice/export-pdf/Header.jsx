@@ -7,7 +7,7 @@ import { format } from 'date-fns';
 import { Text, View, StyleSheet, Image as ImageIcon } from '@react-pdf/renderer';
 
 // assets
-const Logo = '/assets/images/logo.png';
+const Logo = '/assets/images/landing/logo-jeko-white.png';
 
 const textPrimary = '#262626';
 const textSecondary = '#8c8c8c';
