@@ -7,8 +7,7 @@ import ProviderWrapper from './ProviderWrapper';
 
 export const metadata = {
   title: 'Jendela Kode',
-  description:
-    'Journey to Digital Transformation Services.'
+  description: 'Journey to Digital Transformation Services.'
 };
 
 export default function RootLayout({ children }) {
