@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useState } from 'react';
 
@@ -18,7 +18,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import IconButton from 'components/@extended/IconButton';
 
 // assets
-import { Facebook, Google, Notification } from '@wandersonalwes/iconsax-react';
+import { Notification } from '@wandersonalwes/iconsax-react';
 import SvgIcon from '@mui/material/SvgIcon';
 import AuthBackground from '../../../public/assets/images/auth/AuthBackground';
 const coming1 = '/assets/images/maintenance/img-soon-1-1.png';
@@ -55,7 +55,7 @@ export default function ComingSoon() {
       } else {
         setMessage({ type: 'error', text: 'Terjadi kesalahan, silakan coba lagi.' });
       }
-    } catch (err) {
+    } catch {
       setMessage({ type: 'error', text: 'Terjadi kesalahan, silakan coba lagi.' });
     } finally {
       setLoading(false);
