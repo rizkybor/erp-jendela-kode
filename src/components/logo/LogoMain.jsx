@@ -21,27 +21,27 @@ export default function LogoMain({ reverse }) {
   // Properti 'reverse' (jika diaktifkan) bisa digunakan sebagai alternatif kontrol mode tema.
   
   // const selectedLogo = theme.palette.mode === ThemeMode.DARK ? logoDark : logo;
-const selectedLogo =
-  theme.palette.mode === ThemeMode.DARK
-    ? "/assets/images/landing/logo-jeko-dark.png"
-    : "/assets/images/landing/logo-jeko-white.png";  
+  const selectedLogo =
+    theme.palette.mode === ThemeMode.DARK
+      ? '/assets/images/landing/logo-jeko-dark.png'
+      : '/assets/images/landing/logo-jeko-white.png';  
   // Jika Anda ingin properti 'reverse' yang MENGGANTIKAN mode tema, gunakan logika ini:
   // const selectedLogo = reverse ? logoDark : logo; 
 
   return (
     // Menggunakan tag <img> untuk menampilkan logo PNG
     // Anda dapat menyesuaikan 'width' dan 'height' sesuai kebutuhan tata letak Anda.
-    <img 
-      src={selectedLogo} 
-      alt="site logo" 
+    <img
+      src={selectedLogo}
+      alt="site logo"
       // Ukuran berdasarkan atribut SVG sebelumnya, sesuaikan jika perlu.
-      style={{ width: '66px', height: '28px' }} 
+      style={{ width: '66px', height: '28px' }}
     />
   );
 }
 
-LogoMain.propTypes = { 
+LogoMain.propTypes = {
   /** * Jika true, dapat membalikkan logo (berguna untuk forced dark/light mode)
    */
-  reverse: PropTypes.bool 
+  reverse: PropTypes.bool
 };
