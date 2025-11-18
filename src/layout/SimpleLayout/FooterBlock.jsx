@@ -77,7 +77,7 @@ export default function FooterBlock({ isFull }) {
               >
                 <Grid container spacing={2}>
                   <Grid size={12}>
-                    <Logo to="/" />
+                    <Logo width={150} to="/" />
                   </Grid>
                   <Grid size={12}>
                     <Typography variant="subtitle1" sx={{ fontWeight: 400, maxWidth: 320 }}>
