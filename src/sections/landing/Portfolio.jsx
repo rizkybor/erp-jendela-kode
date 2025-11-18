@@ -95,9 +95,9 @@ export default function PortfolioPage() {
 
   return (
     <Container maxWidth="lg">
-      <Box sx={{ py: { xs: 5, md: 15 } }}>
+      <Box sx={{ py: { xs: 5, md: 8 } }}>
         {/* Section Header */}
-        <Grid container spacing={2} sx={{ justifyContent: 'center', textAlign: 'center', mb: { xs: 6, md: 10 } }}>
+        <Grid container spacing={2} sx={{ justifyContent: 'center', textAlign: 'center', mb: { xs: 6, md: 6 } }}>
           <Grid size={12}>
             <motion.div
               initial={{ opacity: 0, y: 550 }}
