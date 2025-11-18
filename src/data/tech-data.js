@@ -1,18 +1,11 @@
 // assets
 const techBootstrap = '/assets/images/landing/tech-bootstrap.svg';
 const techReact = '/assets/images/landing/tech-react.svg';
-const techCodeigniter = '/assets/images/landing/tech-codeigniter.svg';
-const techNet = '/assets/images/landing/tech-net.svg';
 const techFigma = '/assets/images/landing/tech-figma.svg';
 const techVuetify = 'assets/images/landing/tech-vuetify.svg';
-const techAngular = 'assets/images/landing/tech-angular.svg';
-const techVuelaravel = 'assets/images/landing/tech-l+v.svg';
 const techNextJS = 'assets/images/landing/tech-nextjs.svg';
-const techLaravelBootstrap = 'assets/images/landing/tech-Laravel+Bootstrap.svg';
-const techDjango = 'assets/images/landing/tech-Django.svg';
-const techFlask = 'assets/images/landing/tech-Flask.svg';
 const techNodeJs = 'assets/images/landing/tech-Node-js.svg';
-const techSvelteKit = 'assets/images/landing/tech-SvelteKit.svg';
+/* Removed unused tech image constants to satisfy linter (kept assets actually used below) */
 const techTailwind = 'assets/images/landing/tech-tailwind.svg';
 const techFirebase = 'assets/images/landing/tech-firebase.svg';
 const techPgsql = 'assets/images/landing/tech-pgsql.svg';
