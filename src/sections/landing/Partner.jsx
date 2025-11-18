@@ -63,7 +63,25 @@ export default function PartnerPage() {
                   delay: 0.2
                 }}
               >
-                <Typography variant="h2">Trusted By</Typography>
+                <Typography variant="h2">
+                  Trusted by{' '}
+                  <Typography
+                    variant="h1"
+                    component="span"
+                    sx={{
+                      fontSize: 'inherit',
+                      background: 'linear-gradient(90deg, rgb(37, 161, 244), rgb(249, 31, 169), rgb(37, 161, 244)) 0 0 / 400% 100%',
+                      color: 'transparent',
+                      WebkitBackgroundClip: 'text',
+                      backgroundClip: 'text',
+                      animation: 'move-bg 24s infinite linear',
+                      '@keyframes move-bg': { '100%': { backgroundPosition: '400% 0' } }
+                    }}
+                  >
+                    Business
+                  </Typography>{' '}
+                  Across Industries
+                </Typography>
               </motion.div>
             </Grid>
             <Grid size={{ xs: 12, md: 7 }}>
@@ -77,7 +95,7 @@ export default function PartnerPage() {
                   delay: 0.4
                 }}
               >
-                <Typography>From Startups to Fortune 500 companies using our Template for their product.</Typography>
+                <Typography>Join hundreds of satisfied clients who trust us with their digital transformation.</Typography>
               </motion.div>
             </Grid>
           </Grid>

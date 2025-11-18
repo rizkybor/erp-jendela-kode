@@ -35,7 +35,7 @@ function Item({ item }) {
   return (
     <MainCard sx={{ width: { xs: '300px', md: '420px' }, cursor: 'pointer', my: 0.2, mx: 1.5 }}>
       <Stack direction="row" sx={{ gap: 2, alignItems: 'flex-start' }}>
-        <Avatar alt="Avatar" size="lg" src={item.image}></Avatar>
+        <Avatar alt="Avatar" size="lg" src={item.image} />
         <Stack>
           <Typography>{item.text}</Typography>
           <Typography>
@@ -53,10 +53,13 @@ function Item({ item }) {
   );
 }
 
+Item.propTypes = { item: PropTypes.object };
+
 // ==============================|| LANDING - TestimonialPage ||============================== //
 
 export default function TestimonialPage() {
   const theme = useTheme();
+
   const items = [
     {
       image: Avatar1,
@@ -84,7 +87,7 @@ export default function TestimonialPage() {
     },
     {
       image: Avatar5,
-      text: '“The author is very nice and solved my problem inmediately “',
+      text: '“The author is very nice and solved my problem immediately“',
       name: 'richitela',
       designation: 'Customer Support'
     },
@@ -96,76 +99,97 @@ export default function TestimonialPage() {
     },
     {
       image: Avatar7,
-      text: '“The author is very nice and solved my problem inmediately 😍 “',
+      text: '“The author is very nice and solved my problem immediately 😍“',
       name: 'richitela',
       designation: 'Customer Support'
     },
     {
       image: Avatar8,
-      text: '“An amazing template, Very good design, good quality code and also very good customer support.“',
+      text: '“An amazing template, very good design, good quality code and also very good customer support.“',
       name: 'macugi',
       designation: 'Code Quality'
     }
   ];
+
   return (
     <>
       <Box sx={{ mt: { md: 15, xs: 2.5 } }}>
         <Container>
-          <Grid container spacing={2} sx={{ justifyContent: 'center', textAlign: 'center', marginBottom: 4, paddingTop: 3 }}>
+          <Grid
+            container
+            spacing={2}
+            sx={{ justifyContent: 'center', textAlign: 'center', marginBottom: 4, paddingTop: 3 }}
+          >
             <Grid size={12}>
               <motion.div
                 initial={{ opacity: 0, y: 550 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  type: 'spring',
-                  stiffness: 150,
-                  damping: 30,
-                  delay: 0.2
-                }}
+                transition={{ type: 'spring', stiffness: 150, damping: 30, delay: 0.2 }}
               >
                 <Typography variant="h2">
-                  They{' '}
-                  <Typography variant="h2" component="span" sx={{ color: 'primary.main' }}>
-                    love
-                  </Typography>{' '}
-                  Able Pro, Now your turn 😍
+                  What our{' '}
+                  <Typography
+                    variant="h1"
+                    component="span"
+                    sx={{
+                      fontSize: 'inherit',
+                      background:
+                        'linear-gradient(90deg, rgb(37, 161, 244), rgb(249, 31, 169), rgb(37, 161, 244)) 0 0 / 400% 100%',
+                      color: 'transparent',
+                      WebkitBackgroundClip: 'text',
+                      backgroundClip: 'text',
+                      animation: 'move-bg 24s infinite linear',
+                      '@keyframes move-bg': {
+                        '100%': { backgroundPosition: '400% 0' }
+                      }
+                    }}
+                  >
+                    Client
+                  </Typography>
+                  {' '}Say
                 </Typography>
               </motion.div>
             </Grid>
+
             <Grid size={{ xs: 12, md: 7 }}>
               <motion.div
                 initial={{ opacity: 0, y: 550 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  type: 'spring',
-                  stiffness: 150,
-                  damping: 30,
-                  delay: 0.4
-                }}
+                transition={{ type: 'spring', stiffness: 150, damping: 30, delay: 0.4 }}
               >
                 <Typography>
-                  We take pride in our Dashboard development, which has been consistently rated 4.7/5 by our satisfied customers. It brings
-                  us joy to share the positive feedback we have received from our loyal clients.
+                  We take pride in our Dashboard development, which has been consistently rated 4.7/5 by our satisfied
+                  customers. It brings us joy to share the positive feedback we have received from our loyal clients.
                 </Typography>
               </motion.div>
             </Grid>
           </Grid>
         </Container>
       </Box>
+
       <Box sx={{ mb: { md: 10, xs: 2.5 } }}>
         <Grid container spacing={4}>
           <Grid sx={{ direction: theme.direction }} size={12}>
             <FadeInWhenVisible>
-              <Marquee pauseOnHover direction={theme.direction === ThemeDirection.RTL ? 'right' : 'left'} gradient={false}>
+              <Marquee
+                pauseOnHover
+                direction={theme.direction === ThemeDirection.RTL ? 'right' : 'left'}
+                gradient={false}
+              >
                 {items.map((item, index) => (
                   <Item key={index} item={item} />
                 ))}
               </Marquee>
             </FadeInWhenVisible>
           </Grid>
+
           <Grid sx={{ direction: theme.direction }} size={12}>
             <FadeInWhenVisible>
-              <Marquee pauseOnHover direction={theme.direction === ThemeDirection.RTL ? 'left' : 'right'} gradient={false}>
+              <Marquee
+                pauseOnHover
+                direction={theme.direction === ThemeDirection.RTL ? 'left' : 'right'}
+                gradient={false}
+              >
                 {items.map((item, index) => (
                   <Item key={index} item={item} />
                 ))}
@@ -177,5 +201,3 @@ export default function TestimonialPage() {
     </>
   );
 }
-
-Item.propTypes = { item: PropTypes.object };
