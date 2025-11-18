@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { useState, cloneElement } from 'react';
 // next
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 // material-ui
 import { alpha, useTheme } from '@mui/material/styles';
@@ -22,19 +23,24 @@ import ListItemText from '@mui/material/ListItemText';
 import Stack from '@mui/material/Stack';
 import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Divider from '@mui/material/Divider';
+import Avatar from '@mui/material/Avatar';
+import Typography from '@mui/material/Typography';
 
 // project-imports
 import AnimateButton from 'components/@extended/AnimateButton';
-// import Dot from 'components/@extended/Dot';
 import IconButton from 'components/@extended/IconButton';
 import { handlerComponentDrawer, useGetMenuMaster } from 'api/menu';
 import Logo from 'components/logo';
 import { ThemeDirection } from 'config';
-// import { techData } from 'data/tech-data';
 import { useBuyNowLink } from 'hooks/getBuyNowLink';
 
 // assets
-import { ExportSquare, HambergerMenu, Minus } from '@wandersonalwes/iconsax-react';
+import { ExportSquare, HambergerMenu, Minus, CloseCircle } from '@wandersonalwes/iconsax-react';
+
+// animation
+import { motion, AnimatePresence } from 'framer-motion';
 
 // elevation scroll
 function ElevationScroll({ children, window }) {
@@ -53,6 +59,25 @@ function ElevationScroll({ children, window }) {
   });
 }
 
+const stripQuery = (href = '') => href.split('?')[0].replace(/\/+$/g, '') || '/';
+
+// motion variants
+const panelVariant = {
+  hidden: { y: '100%', opacity: 0 },
+  visible: { y: 0, opacity: 1, transition: { type: 'spring', stiffness: 300, damping: 30 } },
+  exit: { y: '100%', opacity: 0, transition: { ease: 'easeInOut', duration: 0.25 } }
+};
+
+const listVariant = {
+  visible: { transition: { staggerChildren: 0.06, delayChildren: 0.04 } },
+  hidden: {}
+};
+
+const itemVariant = {
+  hidden: { opacity: 0, y: 12 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.28, ease: 'easeOut' } }
+};
+
 // ==============================|| COMPONENTS - APP BAR ||============================== //
 
 export default function Header({ layout = 'landing', ...others }) {
@@ -61,26 +86,215 @@ export default function Header({ layout = 'landing', ...others }) {
 
   const { menuMaster } = useGetMenuMaster();
 
-  /** Method called on multiple components with different event types */
+  const pathname = usePathname() || '/';
+
   const drawerToggler = (open) => (event) => {
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
     setDrawerToggle(open);
   };
   const { buyNowLink, getQueryParams } = useBuyNowLink();
 
-  // const MobileMenuListItem = techData.map((item, index) => {
-  //   const finalUrl = item.url !== '#!' ? item.url + getQueryParams : '#!';
-  //   return (
-  //     <ListItemButton key={index} component="a" href={finalUrl} sx={{ p: 0 }}>
-  //       <ListItemIcon>
-  //         <Dot size={4} color="secondary" />
-  //       </ListItemIcon>
-  //       <ListItemText primary={item.label} slotProps={{ primary: { variant: 'h6', color: 'secondary.main' } }} />
-  //     </ListItemButton>
-  //   );
-  // });
+  const isActive = (href) => {
+    const cleaned = stripQuery(href);
+    if (cleaned === '/') return pathname === '/';
+    return pathname === cleaned || pathname.startsWith(cleaned + '/');
+  };
+
+  // header link desktop styles
+  const headerLinkSx = (href) => ({
+    position: 'relative',
+    display: 'inline-block',
+    fontWeight: isActive(href) ? 700 : 500,
+    color: isActive(href) ? 'primary.main' : 'secondary.main',
+    transition: 'color 200ms ease, transform 160ms ease',
+    '&:hover': {
+      transform: 'translateY(-1px)',
+      color: 'primary.main'
+    },
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      left: 0,
+      bottom: -6,
+      height: 3,
+      width: isActive(href) ? '100%' : '0%',
+      borderRadius: 2,
+      transition: 'width 260ms cubic-bezier(.2,.8,.2,1)',
+      backgroundColor: isActive(href) ? 'primary.main' : 'transparent'
+    }
+  });
+
+  // mobile list item sx (for MUI ListItemButton)
+  const mobileListItemSx = (href) => ({
+    borderRadius: 2,
+    px: 1.5,
+    py: 1.25,
+    mb: 0.75,
+    transition: 'all 160ms ease',
+    display: 'flex',
+    alignItems: 'center',
+    ...(isActive(href) && {
+      background: (theme) => `linear-gradient(90deg, ${alpha(theme.palette.primary.main, 0.12)} 0%, ${alpha(theme.palette.primary.light, 0.06)} 100%)`,
+      transform: 'translateX(6px)'
+    }),
+    '& .MuiListItemText-primary': {
+      fontWeight: isActive(href) ? 700 : 600,
+      fontSize: '1.05rem'
+    }
+  });
+
+  // mobile panel content (items)
+  const MobileMenuContent = () => (
+    <motion.div variants={panelVariant} initial="hidden" animate="visible" exit="exit">
+      <Box
+        sx={{
+          minHeight: '100vh',
+          px: 3,
+          py: 3,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 2,
+          background: (theme) =>
+            `linear-gradient(180deg, ${alpha(theme.palette.background.paper, 0.98)} 0%, ${alpha(theme.palette.background.paper, 0.95)} 100%)`,
+          borderTopLeftRadius: 16,
+          borderTopRightRadius: 16
+        }}
+        role="presentation"
+      >
+        {/* header row inside mobile panel */}
+        <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2}>
+          <Stack direction="row" spacing={2} alignItems="center">
+            <Avatar sx={{ width: 40, height: 40, bgcolor: 'primary.main' }}>
+              <Logo to="/" />
+            </Avatar>
+            <Box>
+              <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
+                Menu
+              </Typography>
+              <Typography variant="caption" color="text.secondary">
+                Explore the site
+              </Typography>
+            </Box>
+          </Stack>
+
+          <IconButton size="large" color="secondary" onClick={drawerToggler(false)} sx={{ p: 0.5 }}>
+            <CloseCircle />
+          </IconButton>
+        </Stack>
+
+        {/* search */}
+        <Box>
+          <TextField
+            fullWidth
+            size="small"
+            placeholder="Search pages..."
+            InputProps={{ sx: { borderRadius: 2 } }}
+            aria-label="Search site pages"
+          />
+        </Box>
+
+        <Divider />
+
+        <Box sx={{ flexGrow: 1, overflow: 'auto', pt: 1 }}>
+          <motion.div variants={listVariant} initial="hidden" animate="visible">
+            <List sx={{ p: 0 }}>
+              {/* Home */}
+              <motion.div variants={itemVariant} key="home">
+                <Links style={{ textDecoration: 'none' }} component={Link} href={`/${getQueryParams}`}>
+                  <ListItemButton sx={mobileListItemSx(`/${getQueryParams}`)} onClick={drawerToggler(false)}>
+                    <ListItemIcon sx={{ minWidth: 36 }}>
+                      <Minus />
+                    </ListItemIcon>
+                    <ListItemText primary="Home" />
+                  </ListItemButton>
+                </Links>
+              </motion.div>
+
+              {/* About */}
+              <motion.div variants={itemVariant} key="about">
+                <Links style={{ textDecoration: 'none' }} component={Link} href={`/about${getQueryParams}`}>
+                  <ListItemButton sx={mobileListItemSx(`/about${getQueryParams}`)} onClick={drawerToggler(false)}>
+                    <ListItemIcon sx={{ minWidth: 36 }}>
+                      <Minus />
+                    </ListItemIcon>
+                    <ListItemText primary="About" />
+                  </ListItemButton>
+                </Links>
+              </motion.div>
+
+              {/* Contact */}
+              <motion.div variants={itemVariant} key="contact">
+                <Links style={{ textDecoration: 'none' }} component={Link} href={`/contact-us${getQueryParams}`}>
+                  <ListItemButton sx={mobileListItemSx(`/contact-us${getQueryParams}`)} onClick={drawerToggler(false)}>
+                    <ListItemIcon sx={{ minWidth: 36 }}>
+                      <Minus />
+                    </ListItemIcon>
+                    <ListItemText primary="Contact" />
+                  </ListItemButton>
+                </Links>
+              </motion.div>
+
+              {/* Dashboard */}
+              <motion.div variants={itemVariant} key="login">
+                <Links style={{ textDecoration: 'none' }} component={Link} href={`/login${getQueryParams}`}>
+                  <ListItemButton sx={mobileListItemSx(`/login${getQueryParams}`)} onClick={drawerToggler(false)}>
+                    <ListItemIcon sx={{ minWidth: 36 }}>
+                      <Minus />
+                    </ListItemIcon>
+                    <ListItemText primary="Dashboard" />
+                  </ListItemButton>
+                </Links>
+              </motion.div>
+
+              {/* optional: map menuMaster dynamic items (if available) */}
+              {Array.isArray(menuMaster?.items) &&
+                menuMaster.items.map((m, i) => (
+                  <motion.div variants={itemVariant} key={`mm-${i}`}>
+                    <Links style={{ textDecoration: 'none' }} component={Link} href={m.href || '#!'}>
+                      <ListItemButton sx={mobileListItemSx(m.href || '#!')} onClick={drawerToggler(false)}>
+                        <ListItemIcon sx={{ minWidth: 36 }}>
+                          <Minus />
+                        </ListItemIcon>
+                        <ListItemText primary={m.label} />
+                      </ListItemButton>
+                    </Links>
+                  </motion.div>
+                ))}
+            </List>
+          </motion.div>
+        </Box>
+
+        <Divider />
+
+        {/* CTA area */}
+        <Box sx={{ pt: 1 }}>
+          <AnimateButton>
+            <Button
+              fullWidth
+              component={Links}
+              href={buyNowLink}
+              target="_blank"
+              startIcon={<ExportSquare />}
+              variant="contained"
+              size="large"
+              disableElevation
+              sx={{ borderRadius: 2, py: 1.25 }}
+            >
+              Get in Touch
+            </Button>
+          </AnimateButton>
+
+          <Box sx={{ mt: 1.25, display: 'flex', justifyContent: 'center' }}>
+            <Typography variant="caption" color="text.secondary">
+              © {new Date().getFullYear()}
+            </Typography>
+          </Box>
+        </Box>
+      </Box>
+    </motion.div>
+  );
 
   return (
     <ElevationScroll layout={layout} {...others}>
@@ -107,45 +321,48 @@ export default function Header({ layout = 'landing', ...others }) {
               />
             </Stack>
 
-            {/* Desktop links (open in same tab) */}
+            {/* Desktop links */}
             <Stack
               direction="row"
               sx={{
                 gap: 3,
                 alignItems: 'center',
                 display: { xs: 'none', md: 'flex' },
-                '& .header-link': { fontWeight: 500, '&:hover': { color: 'primary.main' } }
+                '& .header-link': { '&:hover': { color: 'primary.main' } }
               }}
             >
               <Links
                 className="header-link"
-                sx={(theme) => ({ ml: theme.direction === ThemeDirection.RTL ? 3 : 0 })}
+                sx={(theme) => ({ ...headerLinkSx(`/${getQueryParams}`), ml: theme.direction === ThemeDirection.RTL ? 3 : 0 })}
                 color="secondary.main"
                 component={Link}
                 href={`/${getQueryParams}`}
                 underline="none"
+                aria-current={isActive(`/${getQueryParams}`) ? 'page' : undefined}
               >
                 Home
               </Links>
 
               <Links
                 className="header-link"
-                sx={(theme) => ({ ml: theme.direction === ThemeDirection.RTL ? 3 : 0 })}
+                sx={(theme) => ({ ...headerLinkSx(`/about${getQueryParams}`), ml: theme.direction === ThemeDirection.RTL ? 3 : 0 })}
                 color="secondary.main"
                 component={Link}
                 href={`/about${getQueryParams}`}
                 underline="none"
+                aria-current={isActive(`/about${getQueryParams}`) ? 'page' : undefined}
               >
                 About
               </Links>
 
               <Links
                 className="header-link"
-                sx={(theme) => ({ ml: theme.direction === ThemeDirection.RTL ? 3 : 0 })}
+                sx={(theme) => ({ ...headerLinkSx(`/contact-us${getQueryParams}`), ml: theme.direction === ThemeDirection.RTL ? 3 : 0 })}
                 color="secondary.main"
                 component={Link}
                 href={`/contact-us${getQueryParams}`}
                 underline="none"
+                aria-current={isActive(`/contact-us${getQueryParams}`) ? 'page' : undefined}
               >
                 Contact
               </Links>
@@ -181,18 +398,6 @@ export default function Header({ layout = 'landing', ...others }) {
                 <Logo to="/" />
               </Box>
               <Stack direction="row" sx={{ gap: 2 }}>
-                {/* {layout !== 'component' && (
-                  <Button
-                    variant="outlined"
-                    color="warning"
-                    component={Link}
-                    href={`/components-overview/buttons${getQueryParams}`}
-                    sx={{ mt: 0.25 }}
-                  >
-                    All Components
-                  </Button>
-                )} */}
-
                 <IconButton
                   size="large"
                   color="secondary"
@@ -206,70 +411,51 @@ export default function Header({ layout = 'landing', ...others }) {
               </Stack>
 
               <Drawer
-                anchor="top"
+                anchor="bottom"
                 open={drawerToggle}
                 onClose={drawerToggler(false)}
-                slotProps={{ paper: { sx: { backgroundImage: 'none' } } }}
+                ModalProps={{
+                  keepMounted: true
+                }}
+                PaperProps={{
+                  sx: {
+                    background: 'transparent',
+                    boxShadow: 'none',
+                    overflow: 'visible'
+                  }
+                }}
               >
+                {/* Backdrop blur + semi-transparent overlay */}
+                <Box
+                  onClick={drawerToggler(false)}
+                  sx={{
+                    position: 'fixed',
+                    inset: 0,
+                    bgcolor: (theme) => alpha(theme.palette.common.black, 0.35),
+                    backdropFilter: 'blur(6px)'
+                  }}
+                />
+
+                {/* Actual slide-up panel */}
                 <Box
                   sx={{
-                    width: 'auto',
-                    '& .MuiListItemIcon-root': {
-                      fontSize: '1rem',
-                      minWidth: 32
-                    }
+                    position: 'fixed',
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    zIndex: (theme) => theme.zIndex.drawer + 2,
+                    display: 'flex',
+                    justifyContent: 'center',
+                    px: 2
                   }}
-                  role="presentation"
-                  onKeyDown={drawerToggler(false)}
                 >
-                  <List>
-                    <Links style={{ textDecoration: 'none' }} component={Link} href={`/${getQueryParams}`}>
-                      <ListItemButton>
-                        <ListItemIcon>
-                          <Minus />
-                        </ListItemIcon>
-                        <ListItemText primary="Home" slotProps={{ primary: { variant: 'h6', color: 'secondary.main' } }} />
-                      </ListItemButton>
-                    </Links>
-
-                    <Links style={{ textDecoration: 'none' }} component={Link} href={`/about${getQueryParams}`}>
-                      <ListItemButton>
-                        <ListItemIcon>
-                          <Minus />
-                        </ListItemIcon>
-                        <ListItemText primary="About" slotProps={{ primary: { variant: 'h6', color: 'secondary.main' } }} />
-                      </ListItemButton>
-                    </Links>
-
-                    <Links style={{ textDecoration: 'none' }} component={Link} href={`/contact-us${getQueryParams}`}>
-                      <ListItemButton>
-                        <ListItemIcon>
-                          <Minus />
-                        </ListItemIcon>
-                        <ListItemText primary="Contact" slotProps={{ primary: { variant: 'h6', color: 'secondary.main' } }} />
-                      </ListItemButton>
-                    </Links>
-
-                    <Links style={{ textDecoration: 'none' }} component={Link} href={`/login${getQueryParams}`}>
-                      <ListItemButton>
-                        <ListItemIcon>
-                          <Minus />
-                        </ListItemIcon>
-                        <ListItemText primary="Dashboard" slotProps={{ primary: { variant: 'h6', color: 'secondary.main' } }} />
-                      </ListItemButton>
-                    </Links>
-
-                    {/* <Links style={{ textDecoration: 'none' }} component={Link} href={`/components-overview/buttons${getQueryParams}`}>
-                      <ListItemButton>
-                        <ListItemIcon>
-                          <Minus />
-                        </ListItemIcon>
-                        <ListItemText primary="All Components" slotProps={{ primary: { variant: 'h6', color: 'secondary.main' } }} />
-                      </ListItemButton>
-                    </Links> */}
-
-                    {/* Optional: additional items were intentionally removed. Use MobileMenuListItem if you want tech list */}
-                  </List>
+                  <AnimatePresence initial={false} mode="wait">
+                    {drawerToggle && (
+                      <motion.div key="mobile-panel" style={{ width: '100%', maxWidth: 720 }}>
+                        <MobileMenuContent />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </Box>
               </Drawer>
             </Box>
