@@ -5,10 +5,6 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import Box from '@mui/material/Box';
 
 // third-party
@@ -17,38 +13,33 @@ import { motion } from 'framer-motion';
 // project-imports
 import FadeInWhenVisible from './Animation';
 import MainCard from 'components/MainCard';
-import Dot from 'components/@extended/Dot';
 
 const servicesData = [
   {
     icon: '🌐',
-    title: 'Website Development',
-    description: 'Custom, responsive websites built with modern frameworks and best practices',
-    features: ['Responsive Design', 'SEO Optimized', 'Fast Performance']
+    title: 'Professional',
+    description: 'Custom, responsive websites built with modern frameworks and best practices'
   },
   {
     icon: '📱',
-    title: 'Mobile App Development',
-    description: 'Native and cross-platform mobile applications for iOS and Android',
-    features: ['Native & Hybrid', 'Push Notifications', 'Offline Support']
+    title: 'Fast Delivery',
+    description: 'Native and cross-platform mobile applications for iOS and Android'
   },
   {
     icon: '🎨',
-    title: 'UI/UX Design',
-    description: 'Beautiful, intuitive interfaces designed for optimal user experience',
-    features: ['User Research', 'Prototyping', 'Design System']
+    title: 'User Centric',
+    description: 'Beautiful, intuitive interfaces designed for optimal user experience'
   },
   {
     icon: '💻',
-    title: 'Custom Software Development',
-    description: 'Tailored software solutions to meet your unique business needs',
-    features: ['API Integration', 'Cloud Solutions', 'Scalable Architecture']
+    title: 'Secure',
+    description: 'Tailored software solutions to meet your unique business needs'
   }
 ];
 
 // ==============================|| LANDING - SERVICE PAGE ||============================== //
 
-export default function ServicePage() {
+export default function CorePage() {
   return (
     <Container>
       <Grid
@@ -65,13 +56,23 @@ export default function ServicePage() {
           <Grid
             container
             spacing={2}
-            sx={{ justifyContent: 'center', textAlign: 'center', marginBottom: 3, paddingTop: 3 }}
+            sx={{
+              justifyContent: 'center',
+              textAlign: 'center',
+              marginBottom: 3,
+              paddingTop: 3
+            }}
           >
             <Grid size={12}>
               <motion.div
                 initial={{ opacity: 0, y: 550 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ type: 'spring', stiffness: 150, damping: 30, delay: 0.2 }}
+                transition={{
+                  type: 'spring',
+                  stiffness: 150,
+                  damping: 30,
+                  delay: 0.2
+                }}
               >
                 <Typography variant="h2">
                   Our{' '}
@@ -86,11 +87,14 @@ export default function ServicePage() {
                       WebkitBackgroundClip: 'text',
                       backgroundClip: 'text',
                       animation: 'move-bg 24s infinite linear',
-                      '@keyframes move-bg': { '100%': { backgroundPosition: '400% 0' } }
+                      '@keyframes move-bg': {
+                        '100%': { backgroundPosition: '400% 0' }
+                      }
                     }}
                   >
-                    Services
+                    Core
                   </Typography>{' '}
+                  Strengths
                 </Typography>
               </motion.div>
             </Grid>
@@ -99,9 +103,16 @@ export default function ServicePage() {
               <motion.div
                 initial={{ opacity: 0, y: 550 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ type: 'spring', stiffness: 150, damping: 30, delay: 0.4 }}
+                transition={{
+                  type: 'spring',
+                  stiffness: 150,
+                  damping: 30,
+                  delay: 0.4
+                }}
               >
-                <Typography>Comprehensive digital solutions to accelerate your business growth</Typography>
+                <Typography>
+                  What makes us the preferred choice for digital transformation
+                </Typography>
               </motion.div>
             </Grid>
           </Grid>
@@ -144,20 +155,13 @@ export default function ServicePage() {
                         {service.title}
                       </Typography>
 
-                      <Typography variant="body2" color="textSecondary" sx={{ flexGrow: 1 }}>
+                      <Typography
+                        variant="body2"
+                        color="textSecondary"
+                        sx={{ flexGrow: 1 }}
+                      >
                         {service.description}
                       </Typography>
-
-                      <List sx={{ p: 0, m: 0, '& .MuiListItem-root': { p: 0, mb: 1 } }}>
-                        {service.features.map((feature, idx) => (
-                          <ListItem key={idx} sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-                            <ListItemIcon sx={{ minWidth: 24 }}>
-                              <Dot size={8} color="primary" />
-                            </ListItemIcon>
-                            <ListItemText primary={feature} primaryTypographyProps={{ variant: 'body2' }} />
-                          </ListItem>
-                        ))}
-                      </List>
                     </Stack>
                   </MainCard>
                 </FadeInWhenVisible>

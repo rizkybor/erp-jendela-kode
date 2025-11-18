@@ -80,8 +80,8 @@ export default function ComingSoon() {
                     <Typography sx={{ color: 'text.secondary' }}>
                       The ERP platform and integrated management system we've developed is currently in the final stages of development.
                     </Typography>
-                     <Typography sx={{ color: 'text.secondary' }}>
-                     We build solutions that are stable, fast, and fully tailored to your company's operational needs.
+                    <Typography sx={{ color: 'text.secondary' }}>
+                      We build solutions that are stable, fast, and fully tailored to your company's operational needs.
                     </Typography>
                   </Stack>
                 </Grid>

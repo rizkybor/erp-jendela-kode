@@ -13,6 +13,8 @@ import Partner from 'sections/landing/Partner';
 import Subscribe from 'sections/landing/Subscribe';
 import SimpleLayout from 'layout/SimpleLayout';
 import Service from 'sections/landing/Service';
+import Portfolio from 'sections/landing/Portfolio';
+import Core from 'sections/landing/Core';
 
 // ==============================|| LANDING PAGE ||============================== //
 
@@ -24,7 +26,9 @@ export default function Landing() {
       {/* <Combo /> */}
       {/* <FigmaBlock /> */}
       {/* <Apps /> */}
+      <Core />
       <Service />
+      <Portfolio />
       {/* <Free /> */}
       <Testimonial />
       <Subscribe />
