@@ -47,11 +47,24 @@ export default function HeroPage() {
   });
 
   return (
-    <Box sx={{ minHeight: '100vh', position: 'relative', pb: 12.5, pt: 10, display: 'flex', alignItems: 'center' }}>
+    <Box
+      sx={{
+        minHeight: '100vh',
+        position: 'relative',
+        pb: 12.5,
+        pt: 10,
+        display: 'flex',
+        alignItems: 'center',
+        backgroundImage: 'url(/assets/images/landing/hero-section.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}
+    >
       <Container>
-        <Grid container spacing={2} sx={{ alignItems: 'center', justifyContent: 'center', pt: { md: 0, xs: 10 }, pb: { md: 0, xs: 22 } }}>
+        <Grid container spacing={2} sx={{ alignItems: 'start', justifyContent: 'start', pt: { md: 0, xs: 10 }, pb: { md: 0, xs: 22 } }}>
           <Grid size={{ xs: 12, md: 9 }}>
-            <Grid container spacing={3} sx={{ textAlign: 'center' }}>
+            <Grid container spacing={3} sx={{ textAlign: 'start' }}>
               <Grid size={12}>
                 <motion.div
                   initial={{ opacity: 0, y: 550 }}
@@ -70,7 +83,7 @@ export default function HeroPage() {
                       lineHeight: 1.2
                     }}
                   >
-                    Realizing your digital vision through{' '}
+                    Opening Digital{' '}
                     <Typography
                       variant="h1"
                       component="span"
@@ -84,13 +97,13 @@ export default function HeroPage() {
                         '@keyframes move-bg': { '100%': { backgroundPosition: '400% 0' } }
                       }}
                     >
-                      reliable and scalable
+                      Oppurtunities
                     </Typography>{' '}
-                    software development.
+                    Throught Smart Technology Solutions.
                   </Typography>
                 </motion.div>
               </Grid>
-              <Grid container size={12} sx={{ justifyContent: 'center' }}>
+              <Grid container size={12} sx={{ justifyContent: 'start' }}>
                 <Grid size={8}>
                   <motion.div
                     initial={{ opacity: 0, y: 550 }}
@@ -163,7 +176,7 @@ export default function HeroPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ type: 'spring', stiffness: 150, damping: 30, delay: 0.6 }}
                 >
-                  <Grid container spacing={3} sx={{ justifyContent: 'center' }}>
+                  <Grid container spacing={3} sx={{ justifyContent: 'start' }}>
                     <Grid
                       sx={{
                         position: 'relative',
