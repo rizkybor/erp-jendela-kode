@@ -11,21 +11,19 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
-import CardMedia from '@mui/material/CardMedia';
 import Chip from '@mui/material/Chip';
 import Collapse from '@mui/material/Collapse';
 import Container from '@mui/material/Container';
 import Drawer from '@mui/material/Drawer';
 import Links from '@mui/material/Link';
 import List from '@mui/material/List';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import Menu from '@mui/material/Menu';
+/* Menu component removed (unused) */
 import Stack from '@mui/material/Stack';
 import Toolbar from '@mui/material/Toolbar';
-import Tooltip from '@mui/material/Tooltip';
+/* Removed unused imports: CardMedia, ListItemAvatar, Tooltip */
 import Box from '@mui/material/Box';
 
 // project-imports
@@ -40,7 +38,7 @@ import { useBuyNowLink } from 'hooks/getBuyNowLink';
 
 // assets
 import { ArrowDown2, ArrowUp2, ExportSquare, HambergerMenu, Minus } from '@wandersonalwes/iconsax-react';
-import GithubIcon from '../../../public/assets/third-party/github';
+/* GithubIcon removed (unused) */
 
 // elevation scroll
 function ElevationScroll({ children, window }) {
@@ -64,9 +62,6 @@ function ElevationScroll({ children, window }) {
 export default function Header({ layout = 'landing', ...others }) {
   const downMD = useMediaQuery((theme) => theme.breakpoints.down('md'));
   const [drawerToggle, setDrawerToggle] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-
   const [openDrawer, setOpenDrawer] = useState(false);
 
   const { menuMaster } = useGetMenuMaster();
@@ -80,9 +75,7 @@ export default function Header({ layout = 'landing', ...others }) {
   };
   const { buyNowLink, getQueryParams } = useBuyNowLink();
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  /* anchor/menu handlers removed because Live Preview menu is not used in this layout */
 
   const MobileMenuListItem = techData.map((item, index) => {
     const finalUrl = item.url !== '#!' ? item.url + getQueryParams : '#!';
@@ -96,31 +89,9 @@ export default function Header({ layout = 'landing', ...others }) {
     );
   });
 
-  const listItems = techData.map((item, index) => {
-    const finalUrl = item.url !== '#!' ? item.url + getQueryParams : '#!';
-    return (
-      <ListItemButton key={index} component="a" href={finalUrl} target={item.target}>
-        <Tooltip title={item.tooltipTitle} placement="bottom">
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <ListItemAvatar
-              sx={{
-                minWidth: 'auto',
-                marginRight: 1,
-                filter: item.tooltipTitle === 'Live Preview Not Available' ? 'grayscale(1)' : ''
-              }}
-            >
-              <CardMedia component="img" image={item.image} sx={{ width: '30px' }} />
-            </ListItemAvatar>
-            <ListItemText primary={item.label} />
-          </Box>
-        </Tooltip>
-      </ListItemButton>
-    );
-  });
+  /* listItems removed (unused) */
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  /* handleClose removed (unused) */
   return (
     <ElevationScroll layout={layout} {...others}>
       <AppBar
@@ -163,6 +134,39 @@ export default function Header({ layout = 'landing', ...others }) {
                 target="_blank"
                 underline="none"
               >
+                Home
+              </Links>
+              <Links
+                className="header-link"
+                sx={(theme) => ({ ml: theme.direction === ThemeDirection.RTL ? 3 : 0 })}
+                color="secondary.main"
+                component={Link}
+                href={`login${getQueryParams}`}
+                target="_blank"
+                underline="none"
+              >
+                About
+              </Links>
+              <Links
+                className="header-link"
+                sx={(theme) => ({ ml: theme.direction === ThemeDirection.RTL ? 3 : 0 })}
+                color="secondary.main"
+                component={Link}
+                href={`login${getQueryParams}`}
+                target="_blank"
+                underline="none"
+              >
+                Contact
+              </Links>
+              {/* <Links
+                className="header-link"
+                sx={(theme) => ({ ml: theme.direction === ThemeDirection.RTL ? 3 : 0 })}
+                color="secondary.main"
+                component={Link}
+                href={`login${getQueryParams}`}
+                target="_blank"
+                underline="none"
+              >
                 Dashboard
               </Links>
               <Links
@@ -196,8 +200,8 @@ export default function Header({ layout = 'landing', ...others }) {
                 sx={{ path: { strokeWidth: 2 }, svg: { marginBottom: '-3px' } }}
               >
                 Live Preview {open ? <ArrowUp2 size="16" /> : <ArrowDown2 size="16" />}
-              </Links>
-              <Menu
+              </Links> */}
+              {/* <Menu
                 id="wallet-menu"
                 anchorEl={anchorEl}
                 open={open}
@@ -214,8 +218,8 @@ export default function Header({ layout = 'landing', ...others }) {
                 sx={{ '.MuiModal-backdrop': { backgroundColor: 'unset' } }}
               >
                 {listItems}
-              </Menu>
-              <Links href="https://github.com/phoenixcoded/able-pro-free-admin-dashboard-template" target="_blank" underline="none">
+              </Menu> */}
+              {/* <Links href="https://github.com/phoenixcoded/able-pro-free-admin-dashboard-template" target="_blank" underline="none">
                 <IconButton
                   size="large"
                   shape="rounded"
@@ -233,7 +237,7 @@ export default function Header({ layout = 'landing', ...others }) {
                 >
                   <GithubIcon />
                 </IconButton>
-              </Links>
+              </Links> */}
               <Box sx={{ display: 'inline-block' }}>
                 <AnimateButton>
                   <Button
@@ -242,11 +246,11 @@ export default function Header({ layout = 'landing', ...others }) {
                     target="_blank"
                     disableElevation
                     startIcon={<ExportSquare />}
-                    color="success"
+                    color="primary"
                     size="large"
                     variant="contained"
                   >
-                    Purchase Now
+                    Get in Touch
                   </Button>
                 </AnimateButton>
               </Box>

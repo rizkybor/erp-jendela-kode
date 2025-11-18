@@ -219,11 +219,24 @@ const pages = {
     },
     {
       id: 'contact-us',
-      title: 'contact-us',
+      title: 'contact',
       type: 'item',
       url: '/contact-us',
       icon: icons.contactus,
       target: true
+    },
+    {
+      id: 'home',
+      title: 'home',
+      type: 'item',
+      url: '/',
+      icon: icons.landing
+    },
+    {
+      id: 'about',
+      title: 'about',
+      type: 'item',
+      url: '/about'
     },
     {
       id: 'landing',
