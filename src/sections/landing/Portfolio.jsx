@@ -14,45 +14,59 @@ import { motion, AnimatePresence } from 'framer-motion';
 const portfolioData = [
   {
     id: 1,
-    title: 'E-Commerce Platform',
-    description: 'Modern e-commerce platform with advanced features and smooth user experience',
-    image: '/assets/images/landing/portfolio-1.jpg',
-    category: 'Web Development'
+    title: 'Indonesia Adventure Travel Trade Association',
+    description: 'Building capacity, standards and promotion of sustainable Indonesian adventure tourism.',
+    image: '/assets/images/landing/porto-iatta.png',
+    category: 'Portfolio & CRM Website',
+    link: 'https://www.iatta.or.id/home'
   },
   {
     id: 2,
-    title: 'Mobile Banking App',
-    description: 'Secure mobile banking application with real-time transactions and analytics',
-    image: '/assets/images/landing/portfolio-2.jpg',
-    category: 'Mobile App'
+    title: 'Indo Safety Marine',
+    description: 'A tailored CRM System designed to streamline and manage the entire service lifecycle for gas and UTI meter calibration orders.',
+    image: '/assets/images/landing/porto-ism.png',
+    category: 'CRM System',
+    link: 'https://indosafetymarine.co.id/login'
   },
   {
     id: 3,
-    title: 'SaaS Dashboard',
-    description: 'Comprehensive dashboard for data visualization and business analytics',
-    image: '/assets/images/landing/portfolio-3.jpg',
-    category: 'Web Development'
+    title: 'Explore Indonesia',
+    description: 'is a group of environmentalists, explorer, travellers, students and others who are since long time ago and always seeking for the beauties of Indonesia resources to fulfill our love of the nation.',
+    image: '/assets/images/landing/porto-ei.png',
+    category: 'Portfolio Website',
+    link: 'https://www.exploreindonesia.co.id/'
   },
   {
     id: 4,
-    title: 'Fitness Tracking App',
-    description: 'Cross-platform fitness app with wearable integration and AI coaching',
-    image: '/assets/images/landing/portfolio-4.jpg',
-    category: 'Mobile App'
+    title: 'Recruitment BUMN',
+    description: 'A large-scale, enterprise Web Development project serving as the official Centralized Recruitment Portal for Badan Usaha Milik Negara (BUMN). The platform manages the entire hiring process, from candidate registration and application submission to assessment scheduling and announcement of results, ensuring a standardized, transparent, and efficient recruitment experience across numerous state-owned companies.',
+    image: '/assets/images/landing/porto-hcis.png',
+    category: 'CRM & Recruitment Website',
+    link: 'https://hcis.bumn.go.id/'
   },
   {
     id: 5,
-    title: 'Travel Booking Platform',
-    description: 'Full-featured travel booking system with payment gateway integration',
-    image: '/assets/images/landing/portfolio-5.jpg',
-    category: 'Web Development'
+    title: 'Energi Surya Gas',
+    description: 'Specialty Gases, Cryogenic Equipment, Wholesale Renewable Energy',
+    image: '/assets/images/landing/porto-esm.png',
+    category: 'Portfolio Website',
+    link: 'https://energisuryagas.com/'
   },
   {
     id: 6,
-    title: 'Social Media App',
-    description: 'Interactive social platform with real-time messaging and notifications',
-    image: '/assets/images/landing/portfolio-6.jpg',
-    category: 'Mobile App'
+    title: 'ERP Billing',
+    description: 'A specialized ERP System designed to centralize and automate financial operations. Key functionalities include invoice generation, detailed vendor data management, and comprehensive transaction history reconciliation.',
+    image: '/assets/images/landing/porto-pb.png',
+    category: 'Erp System',
+    link: 'https://primebilling.id/login'
+  },
+  {
+    id: 7,
+    title: 'Zaco Law Firm',
+    description: 'Lawyer site multi-practice law firm in Indonesia. ZACO Law Firm promotes working as a team with both clients and colleagues.',
+    image: '/assets/images/landing/porto-zaco.png',
+    category: 'Portfolio Website',
+    link: 'https://zacolawfirm.com/'
   }
 ];
 
@@ -111,8 +125,7 @@ export default function PortfolioPage() {
                   component="span"
                   sx={{
                     fontSize: 'inherit',
-                    background:
-                      'linear-gradient(90deg, rgb(37, 161, 244), rgb(249, 31, 169), rgb(37, 161, 244)) 0 0 / 400% 100%',
+                    background: 'linear-gradient(90deg, rgb(37, 161, 244), rgb(249, 31, 169), rgb(37, 161, 244)) 0 0 / 400% 100%',
                     color: 'transparent',
                     WebkitBackgroundClip: 'text',
                     backgroundClip: 'text',
@@ -179,41 +192,54 @@ export default function PortfolioPage() {
                   }
                 }}
               >
-                <Box sx={{ position: 'relative', zIndex: 2 }}>
-                  <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.5 }}>
-                    <Typography
-                      variant="caption"
-                      sx={{
-                        color: '#64B5F6',
-                        fontWeight: 700,
-                        textTransform: 'uppercase',
-                        letterSpacing: 2,
-                        display: 'inline-block',
-                        mb: 1.5,
-                        px: 1.5,
-                        py: 0.6,
-                        borderRadius: '6px',
-                        background: 'rgba(100, 181, 246, 0.2)',
-                        backdropFilter: 'blur(10px)',
-                        border: '1px solid rgba(100, 181, 246, 0.3)'
-                      }}
-                    >
-                      {portfolio.category}
-                    </Typography>
-                  </motion.div>
+                <a href={portfolio.link} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>
+                  <Box sx={{ position: 'relative', zIndex: 2, cursor: 'pointer' }}>
+                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.5 }}>
+                      <Typography
+                        variant="caption"
+                        sx={{
+                          color: '#64B5F6',
+                          fontWeight: 700,
+                          textTransform: 'uppercase',
+                          letterSpacing: 2,
+                          display: 'inline-block',
+                          mb: 1.5,
+                          px: 1.5,
+                          py: 0.6,
+                          borderRadius: '6px',
+                          background: 'rgba(100, 181, 246, 0.2)',
+                          backdropFilter: 'blur(10px)',
+                          border: '1px solid rgba(100, 181, 246, 0.3)'
+                        }}
+                      >
+                        {portfolio.category}
+                      </Typography>
+                    </motion.div>
 
-                  <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.5 }}>
-                    <Typography variant="h3" sx={{ fontWeight: 700, color: '#fff', mb: 1.5, fontSize: { xs: '1.75rem', sm: '2rem', md: '2.5rem' } }}>
-                      {portfolio.title}
-                    </Typography>
-                  </motion.div>
+                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.5 }}>
+                      <Typography
+                        variant="h3"
+                        sx={{ fontWeight: 700, color: '#fff', mb: 1.5, fontSize: { xs: '1.75rem', sm: '2rem', md: '2.5rem' } }}
+                      >
+                        {portfolio.title}
+                      </Typography>
+                    </motion.div>
 
-                  <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.5 }}>
-                    <Typography variant="body1" sx={{ color: 'rgba(255, 255, 255, 0.95)', lineHeight: 1.8, fontSize: { xs: '0.95rem', sm: '1.05rem', md: '1.1rem' }, maxWidth: '600px' }}>
-                      {portfolio.description}
-                    </Typography>
-                  </motion.div>
-                </Box>
+                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.5 }}>
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          color: 'rgba(255, 255, 255, 0.95)',
+                          lineHeight: 1.8,
+                          fontSize: { xs: '0.95rem', sm: '1.05rem', md: '1.1rem' },
+                          maxWidth: '600px'
+                        }}
+                      >
+                        {portfolio.description}
+                      </Typography>
+                    </motion.div>
+                  </Box>
+                </a>
               </Box>
             </motion.div>
           </AnimatePresence>
