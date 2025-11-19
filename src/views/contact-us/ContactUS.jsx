@@ -4,19 +4,23 @@ import Grid from '@mui/material/Grid';
 
 // project-imports
 import ContactForm from 'sections/extra-pages/contact/ContactForm';
-import ContactHeader from 'sections/extra-pages/contact/ContactHeader';
+import GetInTouch from 'sections/extra-pages/contact/GetInTouch';
+import Map from 'sections/extra-pages/contact/Map';
+// import ContactHeader from 'sections/extra-pages/contact/ContactHeader';
 
 // ==============================|| CONTACT US - MAIN ||============================== //
 
 export default function ContactUSPage() {
   return (
-    <Grid container spacing={12} sx={{ justifyContent: 'center', alignItems: 'center', mb: 12 }}>
-      <Grid size={{ xs: 12, md: 12 }}>
+    <Grid container spacing={12} sx={{ justifyContent: 'center', alignItems: 'center', mb: 12, mt: 12 }}>
+      {/* <Grid size={{ xs: 12, md: 12 }}>
         <ContactHeader />
-      </Grid>
+      </Grid> */}
       <Grid size={{ xs: 12, sm: 10, lg: 9 }}>
         <Container maxWidth="lg" sx={{ px: { xs: 0, sm: 2 } }}>
           <ContactForm />
+          <GetInTouch />
+          <Map />
         </Container>
       </Grid>
     </Grid>
