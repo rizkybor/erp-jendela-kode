@@ -63,7 +63,7 @@ const portfolioData = [
   {
     id: 7,
     title: 'Zaco Law Firm',
-    description: 'A specialized ERP System designed to centralize and automate financial operations. Key functionalities include invoice generation, detailed vendor data management, and comprehensive transaction history reconciliation.',
+    description: 'Lawyer site multi-practice law firm in Indonesia. ZACO Law Firm promotes working as a team with both clients and colleagues.',
     image: '/assets/images/landing/porto-zaco.png',
     category: 'Portfolio Website',
     link: 'https://zacolawfirm.com/'
