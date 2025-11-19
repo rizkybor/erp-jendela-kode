@@ -155,7 +155,8 @@ export default function PortfolioPage() {
             >
               <Box
                 sx={{
-                  width: '100%',
+                  width: '80%',
+                  mx: 'auto',
                   height: '100%',
                   backgroundImage: `url(${portfolio.image})`,
                   backgroundSize: 'cover',
