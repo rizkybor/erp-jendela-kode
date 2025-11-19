@@ -1,6 +1,7 @@
 // src/sections/extra-pages/contact/Map.jsx
 'use client';
 
+import { useRef, useState } from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -26,6 +27,8 @@ export default function MapOnly({
   const isSm = useMediaQuery(theme.breakpoints.up('sm'));
 
   const height = isMd ? defaultHeight.md : isSm ? defaultHeight.sm : defaultHeight.xs;
+  const [loaded, setLoaded] = useState(false);
+  const [isFull, setIsFull] = useState(false);
 
   const containerRef = useRef(null);
 
@@ -69,9 +72,9 @@ export default function MapOnly({
         setIsFull(false);
       }
     } catch (err) {
-      console.error(`Error attempting to toggle fullscreen mode: ${err.message} (${err.name})`);
-    } finally {
-      // keep state consistent with document
+      // Keep state consistent and record debug info
+      /* eslint-disable-next-line no-console */
+      console.debug('Fullscreen toggle error:', err);
       setIsFull(Boolean(document.fullscreenElement));
     }
   };
@@ -174,7 +177,7 @@ export default function MapOnly({
             src={src}
             loading="lazy"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; geolocation"
-            allowFullScreen
+            allowFullScreen={allowFullScreen}
             sandbox="allow-same-origin allow-scripts allow-popups allow-pointer-lock allow-presentation allow-forms"
             onLoad={() => setLoaded(true)}
             style={{ border: 0, width: '100%', height: '100%' }}
