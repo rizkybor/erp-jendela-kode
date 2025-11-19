@@ -13,7 +13,6 @@ import Rating from '@mui/material/Rating';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-// import { useTheme } from '@mui/material/styles';
 
 // project-imports
 import AnimateButton from 'components/@extended/AnimateButton';
@@ -27,7 +26,6 @@ import { motion } from 'framer-motion';
 
 export default function HeroPage() {
   const { getQueryParams } = useBuyNowLink();
-    // const theme = useTheme();
 
   const techBottom = techData.map((item, index) => {
     const finalUrl = item.url !== '#!' ? `${item.url}${getQueryParams}` : '#!';
@@ -57,22 +55,17 @@ export default function HeroPage() {
         pt: 10,
         display: 'flex',
         alignItems: 'center',
-        backgroundImage:
-          theme.palette.mode === 'dark'
-            ? 'none' // jika ingin sembunyikan gambar di dark mode; ubah sesuai kebutuhan
-            : 'url(/assets/images/landing/hero-section.png)',
+        backgroundImage: theme.palette.mode === 'dark' ? 'none' : 'url(/assets/images/landing/hero-section.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
-
-        // overlay gelap saat dark mode
         '&:before': {
           content: '""',
           position: 'absolute',
           inset: 0,
           bgcolor: theme.palette.mode === 'dark' ? 'rgba(0,0,0,0.1)' : 'transparent',
           zIndex: 0
-        },
+        }
       })}
     >
       <Container>
@@ -111,12 +104,13 @@ export default function HeroPage() {
                         '@keyframes move-bg': { '100%': { backgroundPosition: '400% 0' } }
                       }}
                     >
-                      Oppurtunities
+                      Opportunities
                     </Typography>{' '}
                     Throught Smart Technology Solutions.
                   </Typography>
                 </motion.div>
               </Grid>
+
               <Grid container size={12} sx={{ justifyContent: 'start' }}>
                 <Grid size={8}>
                   <motion.div
@@ -142,6 +136,7 @@ export default function HeroPage() {
                   </motion.div>
                 </Grid>
               </Grid>
+
               <Grid size={12}>
                 <motion.div
                   initial={{ opacity: 0, y: 550 }}
@@ -154,12 +149,29 @@ export default function HeroPage() {
                   }}
                 >
                   <Grid container spacing={2} sx={{ justifyContent: 'start' }}>
-                    <Grid>
+                    {/* GET IN TOUCH -> internal auth login route */}
+                    {/* <Grid>
                       <AnimateButton>
                         <Button
                           component={Link}
-                          href={`/login${getQueryParams}`}
+                          href={`/auth/login${getQueryParams}`}
+                          size="large"
+                          color="primary"
+                          variant="contained"
+                        >
+                          Get In Touch
+                        </Button>
+                      </AnimateButton>
+                    </Grid> */}
+
+                    {/* GET FREE CONSULTATION -> WhatsApp Web (external). Replace phone number with your WA number (country code + number, no '+') */}
+                    <Grid>
+                      <AnimateButton>
+                        <Button
+                          component="a"
+                          href={`https://web.whatsapp.com/send?phone=6285121110794&text=Hello%2C%20I%20would%20like%20to%20request%20a%20free%20consultation%20regarding%20your%20digital%20technology%20solutions.`}
                           target="_blank"
+                          rel="noopener noreferrer"
                           size="large"
                           color="primary"
                           variant="contained"
@@ -168,15 +180,11 @@ export default function HeroPage() {
                         </Button>
                       </AnimateButton>
                     </Grid>
+
+                    {/* VIEW PORTFOLIO -> direct to section Our Portfolio on home page */}
                     <Grid>
                       <AnimateButton>
-                        <Button
-                          component={Link}
-                          href={`/components-overview/buttons${getQueryParams}`}
-                          size="large"
-                          color="secondary"
-                          variant="outlined"
-                        >
+                        <Button component={Link} href={`/#our-portfolio`} size="large" color="secondary" variant="outlined">
                           View Portfolio
                         </Button>
                       </AnimateButton>
@@ -184,6 +192,8 @@ export default function HeroPage() {
                   </Grid>
                 </motion.div>
               </Grid>
+
+              {/* rest of content unchanged */}
               <Grid size={12}>
                 <motion.div
                   initial={{ opacity: 0, y: 550 }}
@@ -232,34 +242,11 @@ export default function HeroPage() {
                   </Grid>
                 </motion.div>
               </Grid>
-              {/* <Grid container size={12} sx={{ justifyContent: 'center' }}>
-                <Grid size={8}>
-                  <motion.div
-                    initial={{ opacity: 0, y: 550 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      type: 'spring',
-                      stiffness: 150,
-                      damping: 30,
-                      delay: 0.2
-                    }}
-                  >
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        fontSize: { xs: '0.875rem', md: '1rem' },
-                        fontWeight: 400,
-                        lineHeight: { xs: 1.4, md: 1.4 }
-                      }}
-                    >
-                      - Click Below Icon to Preview Each Tech Demos -
-                    </Typography>
-                  </motion.div>
-                </Grid>
-              </Grid> */}
             </Grid>
           </Grid>
         </Grid>
+
+        {/* tech bottom bar unchanged */}
         <Box
           sx={{
             display: 'flex',
