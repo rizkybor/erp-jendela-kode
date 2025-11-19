@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { useTheme } from '@mui/material/styles';
 
 // third-party
 import { motion } from 'framer-motion';
@@ -40,11 +41,13 @@ const servicesData = [
 // ==============================|| LANDING - SERVICE PAGE ||============================== //
 
 export default function CorePage() {
+  const theme = useTheme();
+  const isDark = theme.palette.mode === 'dark';
   return (
     <Box
       sx={{
         width: '100%',
-        background: 'linear-gradient(to bottom, #e0e0e0, #f8f9fa)'
+        background: isDark ? 'none' : 'linear-gradient(to bottom, #e0e0e0, #f8f9fa)'
       }}
     >
       <Container>
