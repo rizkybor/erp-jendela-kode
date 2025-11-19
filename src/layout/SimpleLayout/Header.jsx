@@ -34,6 +34,7 @@ import IconButton from 'components/@extended/IconButton';
 import { handlerComponentDrawer, useGetMenuMaster } from 'api/menu';
 import Logo from 'components/logo';
 import { ThemeDirection } from 'config';
+// optional hook: if you actually use it, uncomment the import and the destructure below
 // import { useBuyNowLink } from 'hooks/getBuyNowLink';
 
 // assets
@@ -94,6 +95,63 @@ export default function Header({ layout = 'landing', ...others }) {
     }
     setDrawerToggle(open);
   };
+
+  // ======= SAFE FALLBACK FOR getQueryParams / useBuyNowLink =======
+  // Approach:
+  // - Do NOT call the real hook conditionally.
+  // - Create a safe hook reference (useBuyNowLinkSafe) that is either the real hook (if available)
+  //   or a fallback hook that returns an empty object.
+  // - Call useBuyNowLinkSafe() unconditionally so hook call order is preserved.
+
+  // fallback hook (always safe to call)
+  function useBuyNowLinkFallback() {
+    return {};
+  }
+
+  // choose hook function reference without calling it
+  let useBuyNowLinkSafe = useBuyNowLinkFallback;
+  try {
+    // If the developer imported `useBuyNowLink`, the identifier exists.
+    // Use typeof to avoid ReferenceError when it's not imported.
+    // eslint-disable-next-line no-undef
+    if (typeof useBuyNowLink !== 'undefined') {
+      // eslint-disable-next-line no-undef
+      useBuyNowLinkSafe = useBuyNowLink;
+    }
+  } catch (e) {
+    // if any unexpected problem, keep fallback and log
+    // (we use `e` so linter won't complain about an unused variable)
+    // eslint-disable-next-line no-console
+    console.error(e);
+  }
+
+  // Now call the chosen hook deterministically (always called in same order)
+  const { getQueryParams: rawGetQueryParamsFromHook } = useBuyNowLinkSafe() || {};
+  const rawGetQueryParams = rawGetQueryParamsFromHook ?? '';
+
+  // normalize raw value into two convenient forms:
+  // - queryString: starts with '?' (or empty)
+  // - pathSegment: a single path segment without leading/trailing slashes (or empty)
+  const raw = rawGetQueryParams ?? '';
+  const queryString = raw.startsWith('?') ? raw : raw.includes('=') ? `?${raw}` : '';
+  const pathSegment = raw && !raw.startsWith('?') ? raw.replace(/^\/+|\/+$/g, '') : '';
+
+  const makeHref = (base) => {
+    // base is something like '/', '/about', '/login'
+    if (!base) base = '/';
+    // if we have a query string, append it to base
+    if (queryString) return `${base}${queryString}`;
+    // if we have a path segment, join intelligently
+    if (pathSegment) {
+      if (base === '/' || base === '') return `/${pathSegment}`;
+      // avoid duplicate slashes
+      return `${base.replace(/\/+$/g, '')}/${pathSegment}`;
+    }
+    // default: just base
+    return base;
+  };
+  // =================================================================
+
   // const { buyNowLink, getQueryParams } = useBuyNowLink();
 
   const isActive = (href) => {
@@ -202,8 +260,8 @@ export default function Header({ layout = 'landing', ...others }) {
             <List sx={{ p: 0 }}>
               {/* Home */}
               <motion.div variants={itemVariant} key="home">
-                <Links style={{ textDecoration: 'none' }} component={Link} href={`/${getQueryParams}`}>
-                  <ListItemButton sx={mobileListItemSx(`/${getQueryParams}`)} onClick={drawerToggler(false)}>
+                <Links style={{ textDecoration: 'none' }} component={Link} href={makeHref('/')}>
+                  <ListItemButton sx={mobileListItemSx(makeHref('/'))} onClick={drawerToggler(false)}>
                     <ListItemIcon sx={{ minWidth: 36 }}>
                       <Minus />
                     </ListItemIcon>
@@ -214,8 +272,8 @@ export default function Header({ layout = 'landing', ...others }) {
 
               {/* About */}
               <motion.div variants={itemVariant} key="about">
-                <Links style={{ textDecoration: 'none' }} component={Link} href={`/about${getQueryParams}`}>
-                  <ListItemButton sx={mobileListItemSx(`/about${getQueryParams}`)} onClick={drawerToggler(false)}>
+                <Links style={{ textDecoration: 'none' }} component={Link} href={makeHref('/about')}>
+                  <ListItemButton sx={mobileListItemSx(makeHref('/about'))} onClick={drawerToggler(false)}>
                     <ListItemIcon sx={{ minWidth: 36 }}>
                       <Minus />
                     </ListItemIcon>
@@ -226,8 +284,8 @@ export default function Header({ layout = 'landing', ...others }) {
 
               {/* Contact */}
               <motion.div variants={itemVariant} key="contact">
-                <Links style={{ textDecoration: 'none' }} component={Link} href={`/contact-us${getQueryParams}`}>
-                  <ListItemButton sx={mobileListItemSx(`/contact-us${getQueryParams}`)} onClick={drawerToggler(false)}>
+                <Links style={{ textDecoration: 'none' }} component={Link} href={makeHref('/contact-us')}>
+                  <ListItemButton sx={mobileListItemSx(makeHref('/contact-us'))} onClick={drawerToggler(false)}>
                     <ListItemIcon sx={{ minWidth: 36 }}>
                       <Minus />
                     </ListItemIcon>
@@ -238,8 +296,8 @@ export default function Header({ layout = 'landing', ...others }) {
 
               {/* Dashboard */}
               <motion.div variants={itemVariant} key="login">
-                <Links style={{ textDecoration: 'none' }} component={Link} href={`/login${getQueryParams}`}>
-                  <ListItemButton sx={mobileListItemSx(`/login${getQueryParams}`)} onClick={drawerToggler(false)}>
+                <Links style={{ textDecoration: 'none' }} component={Link} href={makeHref('/login')}>
+                  <ListItemButton sx={mobileListItemSx(makeHref('/login'))} onClick={drawerToggler(false)}>
                     <ListItemIcon sx={{ minWidth: 36 }}>
                       <Minus />
                     </ListItemIcon>
@@ -274,7 +332,7 @@ export default function Header({ layout = 'landing', ...others }) {
             <Button
               fullWidth
               component={Links}
-              href={`/auth/login${getQueryParams}`}
+              href={makeHref('/auth/login')}
               target="_blank"
               startIcon={<ExportSquare />}
               variant="contained"
@@ -333,36 +391,36 @@ export default function Header({ layout = 'landing', ...others }) {
             >
               <Links
                 className="header-link"
-                sx={(theme) => ({ ...headerLinkSx(`/${getQueryParams}`), ml: theme.direction === ThemeDirection.RTL ? 3 : 0 })}
+                sx={(theme) => ({ ...headerLinkSx(makeHref('/')), ml: theme.direction === ThemeDirection.RTL ? 3 : 0 })}
                 color="secondary.main"
                 component={Link}
-                href={`/${getQueryParams}`}
+                href={makeHref('/')}
                 underline="none"
-                aria-current={isActive(`/${getQueryParams}`) ? 'page' : undefined}
+                aria-current={isActive(makeHref('/')) ? 'page' : undefined}
               >
                 Home
               </Links>
 
               <Links
                 className="header-link"
-                sx={(theme) => ({ ...headerLinkSx(`/about${getQueryParams}`), ml: theme.direction === ThemeDirection.RTL ? 3 : 0 })}
+                sx={(theme) => ({ ...headerLinkSx(makeHref('/about')), ml: theme.direction === ThemeDirection.RTL ? 3 : 0 })}
                 color="secondary.main"
                 component={Link}
-                href={`/about${getQueryParams}`}
+                href={makeHref('/about')}
                 underline="none"
-                aria-current={isActive(`/about${getQueryParams}`) ? 'page' : undefined}
+                aria-current={isActive(makeHref('/about')) ? 'page' : undefined}
               >
                 About
               </Links>
 
               <Links
                 className="header-link"
-                sx={(theme) => ({ ...headerLinkSx(`/contact-us${getQueryParams}`), ml: theme.direction === ThemeDirection.RTL ? 3 : 0 })}
+                sx={(theme) => ({ ...headerLinkSx(makeHref('/contact-us')), ml: theme.direction === ThemeDirection.RTL ? 3 : 0 })}
                 color="secondary.main"
                 component={Link}
-                href={`/contact-us${getQueryParams}`}
+                href={makeHref('/contact-us')}
                 underline="none"
-                aria-current={isActive(`/contact-us${getQueryParams}`) ? 'page' : undefined}
+                aria-current={isActive(makeHref('/contact-us')) ? 'page' : undefined}
               >
                 Contact
               </Links>
@@ -371,7 +429,7 @@ export default function Header({ layout = 'landing', ...others }) {
                 <AnimateButton>
                   <Button
                     component={Links}
-                    href={`/auth/login${getQueryParams}`}
+                    href={makeHref('/auth/login')}
                     target="_blank"
                     disableElevation
                     startIcon={<ExportSquare />}

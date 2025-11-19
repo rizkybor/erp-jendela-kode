@@ -4,33 +4,34 @@ import { NextResponse } from 'next/server';
 export function middleware(request) {
   const { pathname } = request.nextUrl;
 
-  // Normalisasi value dari env (build-time). Bisa 'true', '1', 'yes' -> treat as true
-  const envVal = process.env.NEXT_PUBLIC_UNDER_CONSTRUCTION ?? '';
-  const underConstruction = ['true', '1', 'yes'].includes(envVal.toLowerCase());
+  // Safe normalization of env value
+  const envVal = String(process.env.NEXT_PUBLIC_UNDER_CONSTRUCTION || '').trim().toLowerCase();
+  const underConstruction = ['true', '1', 'yes'].includes(envVal);
 
-  // Jangan jalankan untuk route yang harus dikecualikan
-  // (internal next files, API routes, static assets, next-data, images, favicon, robots, sw)
+  // Routes/prefixes yang dikecualikan dari middleware
   const excludedPrefixes = [
     '/_next',        // internal next
-    '/api',          // api routes
+    '/api',          // API routes
     '/favicon.ico',
     '/robots.txt',
     '/sitemap.xml',
     '/_next/static',
     '/_next/image',
     '/static',
-    '/assets',       // jika Anda menggunakan /assets
+    '/assets',
     '/under-construction' // jangan redirect halaman under-construction itu sendiri
   ];
 
-  for (const prefix of excludedPrefixes) {
-    if (pathname === prefix || pathname.startsWith(prefix + '/') || pathname.startsWith(prefix)) {
-      return NextResponse.next();
-    }
+  // Jika path cocok dengan salah satu prefix yang dikecualikan -> lanjutkan tanpa interrupt
+  const isExcluded = excludedPrefixes.some(prefix =>
+    pathname === prefix || pathname.startsWith(prefix + '/')
+  );
+  if (isExcluded) {
+    return NextResponse.next();
   }
 
   if (underConstruction) {
-    // redirect ke halaman under-construction (absolute URL built from request.url)
+    // Redirect relatif — build absolute URL dari request.url
     const destination = new URL('/under-construction', request.url);
     return NextResponse.redirect(destination);
   }
@@ -40,7 +41,8 @@ export function middleware(request) {
 
 export const config = {
   matcher: [
-    // Match semua kecuali internals — sesuaikan jika Anda punya folder publik khusus
-    '/((?!_next|api|favicon.ico|robots.txt|sitemap.xml|static|assets).*)'
+    // Jangan jalankan untuk internal _next, api, atau halaman under-construction itu sendiri
+    // (menambahkan under-construction ke negative lookahead agar middleware tidak dipanggil untuk page itu)
+    '/((?!_next|api|favicon.ico|robots.txt|sitemap.xml|static|assets|under-construction).*)'
   ]
 };
