@@ -20,7 +20,9 @@ export default function Landing() {
       <Partner />
       <Core />
       <Service />
-      <Portfolio />
+ <div id="our-portfolio">
+        <Portfolio />
+      </div>
       <Testimonial />
       <Subscribe />
       <Divider sx={{ borderColor: 'secondary.light' }} />
