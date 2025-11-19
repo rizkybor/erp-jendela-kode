@@ -10,6 +10,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Box from '@mui/material/Box';
+import { useTheme } from '@mui/material/styles';
 
 // third-party
 import { motion } from 'framer-motion';
@@ -49,12 +50,14 @@ const servicesData = [
 // ==============================|| LANDING - SERVICE PAGE ||============================== //
 
 export default function ServicePage() {
+  const theme = useTheme();
+  const isDark = theme.palette.mode === 'dark';
   return (
     <Box
       sx={{
         width: '100%',
         paddingBottom: 5,
-        background: 'linear-gradient(to bottom, #f8f9fa, #e0e0e0)'
+        background: isDark ? 'none' : 'linear-gradient(to bottom, #f8f9fa, #e0e0e0)'
       }}
     >
       <Container>
