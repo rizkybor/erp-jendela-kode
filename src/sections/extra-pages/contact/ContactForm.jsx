@@ -11,6 +11,7 @@ import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { motion } from 'framer-motion';
 
 // select company-size
 const sizes = [
@@ -27,9 +28,84 @@ export default function ContactForm() {
     setSize(Number(event.target?.value));
   };
   return (
-    <Box sx={{ p: { xs: 2.5, sm: 0 } }}>
-      <Grid container spacing={5} sx={{ justifyContent: 'center' }}>
-        <Grid size={{ xs: 12, sm: 10, lg: 6 }}>
+    <Box
+      sx={{
+        p: {
+          xs: 2.5,
+          sm: 2,
+          md: 5,
+          borderRadius: 24,
+          boxShadow: '0 20px 55px rgba(15, 23, 42, 0.06)'
+        },
+        maxWidth: {
+          sm: '90%',
+          md: '70%'
+        },
+        mx: 'auto'
+      }}
+    >
+      <Grid container spacing={5} sx={{ justifyContent: 'center'}}>
+        <Grid size={12}>
+          <Grid
+            container
+            spacing={2}
+            sx={{
+              justifyContent: 'center',
+              textAlign: 'center'
+            }}
+          >
+            <Grid size={12}>
+              <motion.div
+                initial={{ opacity: 0, y: 550 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  type: 'spring',
+                  stiffness: 150,
+                  damping: 30,
+                  delay: 0.2
+                }}
+              >
+                <Typography variant="h2">
+                  <Typography
+                    variant="h1"
+                    component="span"
+                    sx={{
+                      fontSize: 'inherit',
+                      background: 'linear-gradient(90deg, rgb(37, 161, 244), rgb(249, 31, 169), rgb(37, 161, 244)) 0 0 / 400% 100%',
+                      color: 'transparent',
+                      WebkitBackgroundClip: 'text',
+                      backgroundClip: 'text',
+                      animation: 'move-bg 24s infinite linear',
+                      '@keyframes move-bg': {
+                        '100%': { backgroundPosition: '400% 0' }
+                      }
+                    }}
+                  >
+                    Start Your Project
+                  </Typography>{' '}
+                  With Us
+                </Typography>
+              </motion.div>
+            </Grid>
+
+            <Grid size={12}>
+              <motion.div
+                initial={{ opacity: 0, y: 550 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  type: 'spring',
+                  stiffness: 150,
+                  damping: 30,
+                  delay: 0.4
+                }}
+              >
+                <Typography>What makes us the preferred choice for digital transformation</Typography>
+              </motion.div>
+            </Grid>
+          </Grid>
+        </Grid>
+
+        <Grid size={{ xs: 12, sm: 10, lg: 8 }}>
           <Grid container spacing={3}>
             <Grid size={{ xs: 12, md: 6 }}>
               <Stack sx={{ gap: 1 }}>
