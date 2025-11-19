@@ -30,7 +30,7 @@ const IconCircle = styled(Box)(({ theme }) => ({
   justifyContent: 'center',
   color: theme.palette.common.white,
   background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.mode === 'dark' ? '#7c3aed' : '#6c4bd1'})`,
-boxShadow: '0 22px 48px rgba(16,24,40,0.16)',
+  boxShadow: '0 22px 48px rgba(16,24,40,0.16)',
   margin: '0 auto',
   transform: 'translateY(28px)',
   zIndex: 3,
@@ -48,7 +48,7 @@ boxShadow: '0 22px 48px rgba(16,24,40,0.16)',
 
 const Card = styled(Paper)(({ theme }) => ({
   borderRadius: theme.spacing(1.5),
-  padding: theme.spacing(3),
+  padding: theme.spacing(1),
   height: CARD_HEIGHT_DESKTOP,
   display: 'flex',
   flexDirection: 'column',
@@ -101,8 +101,8 @@ const steps = [
 ];
 
 /* utility to split into top-row (3 first) and bottom-row (2 next) */
-const topRow = steps.slice(0, 3);
-const bottomRow = steps.slice(3, 5);
+// const topRow = steps.slice(0, 3);
+// const bottomRow = steps.slice(3, 5);
 
 /* ---------- Component ---------- */
 export default function ProcessPageResponsive() {
@@ -135,19 +135,23 @@ export default function ProcessPageResponsive() {
       <MotionBox initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.25 }} variants={container}>
         <Grid
           container
-          spacing={{ xs: 3, md: 4 }}
+          spacing={{ xs: 3, md: 6 }}
           justifyContent="center"
           alignItems="flex-start"
           rowGap={{ xs: 6, md: 10 }}
-          sx={{ mb: { xs: 3, md: 6 } }}
+          sx={{
+            mx: 'auto',
+            maxWidth: '80%',
+            flexWrap: { xs: 'wrap', md: 'nowrap' }
+          }}
         >
-          {topRow.map((s) => (
+          {steps.map((s) => (
             <Grid
               key={s.title}
               item
               xs={12}
               sm={6}
-              md={4}
+              md={12}
               sx={{
                 display: 'flex',
                 justifyContent: 'center',
@@ -161,50 +165,6 @@ export default function ProcessPageResponsive() {
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                   <IconCircle>{s.icon}</IconCircle>
                 </Box>
-                <Box sx={{ mt: { xs: '2px', md: '45px' } }}>
-                  <Card role="article" aria-labelledby={`proc-${s.title}`}>
-                    <CardInner>
-                      <Stack spacing={1}>
-                        <Typography variant="caption" sx={{ color: theme.palette.primary.main, fontWeight: 600 }}>
-                          {s.step}
-                        </Typography>
-                        <Typography variant="h6" sx={{ fontWeight: 700 }}>
-                          {s.title}
-                        </Typography>
-                        <Desc variant="body2" color="text.secondary">
-                          {s.desc}
-                        </Desc>
-                      </Stack>
-                    </CardInner>
-                  </Card>
-                </Box>
-              </MotionBox>
-            </Grid>
-          ))}
-        </Grid>
-
-        <Grid container spacing={{ xs: 3, md: 4 }} justifyContent="center" alignItems="flex-start" rowGap={{ xs: 6, md: 8 }}>
-          {bottomRow.map((s) => (
-            <Grid
-              key={s.title}
-              item
-              xs={12}
-              sm={6}
-              md={4}
-              sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                [theme.breakpoints.up('md')]: {
-                  flexBasis: '30%',
-                  maxWidth: '30%'
-                }
-              }}
-            >
-              <MotionBox variants={fadeUp} sx={{ width: '100%' }}>
-                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                  <IconCircle>{s.icon}</IconCircle>
-                </Box>
-
                 <Box sx={{ mt: { xs: '2px', md: '45px' } }}>
                   <Card role="article" aria-labelledby={`proc-${s.title}`}>
                     <CardInner>

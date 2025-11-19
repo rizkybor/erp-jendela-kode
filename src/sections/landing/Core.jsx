@@ -122,7 +122,7 @@ export default function CorePage() {
           </Grid>
 
           <Grid size={12}>
-            <Grid container spacing={3} sx={{ alignItems: 'stretch' }}>
+            <Grid container justifyContent="center" spacing={3} sx={{ alignItems: 'stretch', maxWidth: '80%', mx: 'auto' }}>
               {servicesData.map((service, index) => (
                 <Grid key={index} size={{ xs: 12, md: 6 }}>
                   <FadeInWhenVisible>
