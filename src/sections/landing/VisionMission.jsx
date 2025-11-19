@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 // import Stack from '@mui/material/Stack';
-import { styled, useTheme } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 
 import { motion } from 'framer-motion';
 
@@ -100,7 +100,6 @@ function truncateText(text, maxLen) {
 }
 
 export default function VisionMissionPage() {
-  const theme = useTheme();
 
   return (
     <Container maxWidth="lg" sx={{ py: { xs: 4, md: 6 } }}>
