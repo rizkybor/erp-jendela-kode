@@ -57,7 +57,7 @@ export default function ServicePage() {
       sx={{
         width: '100%',
         paddingBottom: 5,
-        background: isDark ? 'none' : 'linear-gradient(to bottom, #f8f9fa, #e0e0e0)'
+        background: isDark ? 'none' : 'linear-gradient(to bottom, transparent, #e0e0e0)'
       }}
     >
       <Container>
