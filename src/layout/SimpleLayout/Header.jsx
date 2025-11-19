@@ -34,7 +34,7 @@ import IconButton from 'components/@extended/IconButton';
 import { handlerComponentDrawer, useGetMenuMaster } from 'api/menu';
 import Logo from 'components/logo';
 import { ThemeDirection } from 'config';
-import { useBuyNowLink } from 'hooks/getBuyNowLink';
+// import { useBuyNowLink } from 'hooks/getBuyNowLink';
 
 // assets
 import { ExportSquare, HambergerMenu, Minus, CloseCircle } from '@wandersonalwes/iconsax-react';
@@ -94,7 +94,7 @@ export default function Header({ layout = 'landing', ...others }) {
     }
     setDrawerToggle(open);
   };
-  const { buyNowLink, getQueryParams } = useBuyNowLink();
+  // const { buyNowLink, getQueryParams } = useBuyNowLink();
 
   const isActive = (href) => {
     const cleaned = stripQuery(href);
@@ -274,7 +274,7 @@ export default function Header({ layout = 'landing', ...others }) {
             <Button
               fullWidth
               component={Links}
-              href={buyNowLink}
+              href={`/auth/login${getQueryParams}`}
               target="_blank"
               startIcon={<ExportSquare />}
               variant="contained"
@@ -371,7 +371,7 @@ export default function Header({ layout = 'landing', ...others }) {
                 <AnimateButton>
                   <Button
                     component={Links}
-                    href={buyNowLink}
+                    href={`/auth/login${getQueryParams}`}
                     target="_blank"
                     disableElevation
                     startIcon={<ExportSquare />}
