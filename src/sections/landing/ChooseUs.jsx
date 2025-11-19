@@ -145,8 +145,7 @@ export default function ChooseUsPage() {
           alignItems="stretch"
           sx={{
             mx: 'auto',
-            maxWidth: 1400,
-            // IMPORTANT: disable wrapping on md and up so columns stay side-by-side
+            maxWidth: '80%',
             flexWrap: { xs: 'wrap', md: 'nowrap' }
           }}
         >

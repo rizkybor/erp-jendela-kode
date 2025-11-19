@@ -140,6 +140,11 @@ export default function VisionMissionPage() {
           alignItems="stretch"
           justifyContent="center"
           wrap="wrap"
+          sx={{
+            mx: 'auto',
+            maxWidth: '80%',
+            flexWrap: { xs: 'wrap', md: 'nowrap' }
+          }}
         >
           {data.map((item) => (
             <Grid
@@ -152,11 +157,7 @@ export default function VisionMissionPage() {
                 boxSizing: 'border-box',
                 display: 'flex',
                 alignItems: 'stretch',
-                // Pastikan 3 kolom pada breakpoint md+
-                [theme.breakpoints.up('md')]: {
-                  flexBasis: '30%',
-                  maxWidth: '30%'
-                }
+               
               }}
             >
               <MotionBox component="div" variants={fadeUp} sx={{ width: '100%' }}>
