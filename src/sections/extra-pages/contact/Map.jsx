@@ -90,7 +90,17 @@ export default function MapOnly({
   };
 
   return (
-    <Box component="section" sx={{ width: '100%' }}>
+    <Box
+      component="section"
+      sx={{
+        width: {
+          xs: '80%',
+          md: '90%',
+          lg: '100%'
+        },
+        mx: 'auto'
+      }}
+    >
       <Grid size={12}>
         <Grid
           container

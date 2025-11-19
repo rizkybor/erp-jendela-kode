@@ -13,6 +13,7 @@ import Rating from '@mui/material/Rating';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+// import { useTheme } from '@mui/material/styles';
 
 // project-imports
 import AnimateButton from 'components/@extended/AnimateButton';
@@ -26,6 +27,7 @@ import { motion } from 'framer-motion';
 
 export default function HeroPage() {
   const { getQueryParams } = useBuyNowLink();
+    // const theme = useTheme();
 
   const techBottom = techData.map((item, index) => {
     const finalUrl = item.url !== '#!' ? `${item.url}${getQueryParams}` : '#!';
@@ -48,18 +50,30 @@ export default function HeroPage() {
 
   return (
     <Box
-      sx={{
+      sx={(theme) => ({
         minHeight: '100vh',
         position: 'relative',
         pb: 12.5,
         pt: 10,
         display: 'flex',
         alignItems: 'center',
-        backgroundImage: 'url(/assets/images/landing/hero-section.png)',
+        backgroundImage:
+          theme.palette.mode === 'dark'
+            ? 'none' // jika ingin sembunyikan gambar di dark mode; ubah sesuai kebutuhan
+            : 'url(/assets/images/landing/hero-section.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundAttachment: 'fixed'
-      }}
+        backgroundAttachment: 'fixed',
+
+        // overlay gelap saat dark mode
+        '&:before': {
+          content: '""',
+          position: 'absolute',
+          inset: 0,
+          bgcolor: theme.palette.mode === 'dark' ? 'rgba(0,0,0,0.1)' : 'transparent',
+          zIndex: 0
+        },
+      })}
     >
       <Container>
         <Grid container spacing={2} sx={{ alignItems: 'start', justifyContent: 'start', pt: { md: 0, xs: 10 }, pb: { md: 0, xs: 22 } }}>
