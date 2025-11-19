@@ -47,7 +47,7 @@ export default function CorePage() {
     <Box
       sx={{
         width: '100%',
-        background: isDark ? 'none' : 'linear-gradient(to bottom, #e0e0e0, #f8f9fa)'
+        background: isDark ? 'none' : 'linear-gradient(to bottom, #e0e0e0, transparent)'
       }}
     >
       <Container>
