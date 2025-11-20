@@ -23,7 +23,7 @@ export const techData = [
   {
     label: 'Docker',
     image: techDocker,
-    url: 'https://ableproadmin.com/angular/default/dashboard/default',
+    url: '#!',
     target: '_blank',
     tooltipTitle: 'Docker',
     description:
@@ -33,7 +33,7 @@ export const techData = [
   {
     label: 'Firebase',
     image: techFirebase,
-    url: 'https://ableproadmin.com/angular/default/dashboard/default',
+    url: '#!',
     target: '_blank',
     tooltipTitle: 'Firebase',
     description:
@@ -43,7 +43,7 @@ export const techData = [
   {
     label: 'PostgreSQL',
     image: techPgsql,
-    url: 'https://ableproadmin.com/angular/default/dashboard/default',
+    url: '#!',
     target: '_blank',
     tooltipTitle: 'PostgreSQL',
     description:
@@ -53,7 +53,7 @@ export const techData = [
   {
     label: 'MongoDB',
     image: techMongodb,
-    url: 'https://ableproadmin.com/angular/default/dashboard/default',
+    url: '#!',
     target: '_blank',
     tooltipTitle: 'MongoDB',
     description:
@@ -63,7 +63,7 @@ export const techData = [
   {
     label: 'MySql',
     image: techMysql,
-    url: 'https://ableproadmin.com/angular/default/dashboard/default',
+    url: '#!',
     target: '_blank',
     tooltipTitle: 'Mysql',
     description:
@@ -75,7 +75,7 @@ export const techData = [
     image: techNodeJs,
     url: '#!',
     target: '_self',
-    tooltipTitle: 'Live Preview Not Available',
+    tooltipTitle: 'Node JS',
     description:
       'Able Pro Node.js combines flexibility and functionality with a variety of pre-built components tailored for Node.js, which make it easier to develop.',
     free: 'https://github.com/phoenixcoded/able-pro-free-admin-dashboard-template'
@@ -83,7 +83,7 @@ export const techData = [
   {
     label: 'React MUI',
     image: techReact,
-    url: 'https://ableproadmin.com/react/dashboard/default',
+    url: '#!',
     target: '_blank',
     tooltipTitle: 'React MUI',
     description:
@@ -93,7 +93,7 @@ export const techData = [
   {
     label: 'Next js',
     image: techNextJS,
-    url: '/login',
+    url: '#!',
     target: '_blank',
     tooltipTitle: 'Next js',
     description:
@@ -103,7 +103,7 @@ export const techData = [
   {
     label: 'Vue js',
     image: techVue,
-    url: '/login',
+    url: '#!',
     target: '_blank',
     tooltipTitle: 'Vue js',
     description:
@@ -113,7 +113,7 @@ export const techData = [
   {
     label: 'Nuxt Js',
     image: techNuxt,
-    url: 'https://ableproadmin.com/vue/dashboard/default',
+    url: '#!',
     target: '_blank',
     tooltipTitle: 'Nuxt Js',
     description:
@@ -123,7 +123,7 @@ export const techData = [
   {
     label: 'Electron',
     image: techElectron,
-    url: 'https://ableproadmin.com/vue/dashboard/default',
+    url: '#!',
     target: '_blank',
     tooltipTitle: 'Electron',
     description:
@@ -163,7 +163,7 @@ export const techData = [
   {
     label: 'Tailwind',
     image: techTailwind,
-    url: 'https://ableproadmin.com/tailwind/dashboard/index.html',
+    url: '#!',
     target: '_blank',
     tooltipTitle: 'Tailwind',
     description:
@@ -173,7 +173,7 @@ export const techData = [
   {
     label: 'Bootstrap',
     image: techBootstrap,
-    url: 'https://ableproadmin.com/dashboard/index.html',
+    url: '#!',
     target: '_blank',
     tooltipTitle: 'Bootstrap',
     description:
@@ -183,7 +183,7 @@ export const techData = [
   {
     label: 'Vuetify',
     image: techVuetify,
-    url: 'https://ableproadmin.com/vue/dashboard/default',
+    url: '#!',
     target: '_blank',
     tooltipTitle: 'Vuetify',
     description:
@@ -193,7 +193,7 @@ export const techData = [
   {
     label: 'Figma',
     image: techFigma,
-    url: 'https://www.figma.com/file/6XqmRhRmkr33w0EFD49acY/Able-Pro--v9.0-Figma-Preview?type=design&mode=design&t=4FS2Lw6WxsmJ3RLm-0',
+    url: '#!',
     target: '_blank',
     tooltipTitle: 'Figma',
     description:

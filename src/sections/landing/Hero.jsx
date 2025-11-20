@@ -8,7 +8,7 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import CardMedia from '@mui/material/CardMedia';
-import Links from '@mui/material/Link';
+// import Links from '@mui/material/Link';
 import Rating from '@mui/material/Rating';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
@@ -17,7 +17,7 @@ import Box from '@mui/material/Box';
 // project-imports
 import AnimateButton from 'components/@extended/AnimateButton';
 import { techData } from 'data/tech-data';
-import { useBuyNowLink } from 'hooks/getBuyNowLink';
+// import { useBuyNowLink } from 'hooks/getBuyNowLink';
 
 // third-party
 import { motion } from 'framer-motion';
@@ -25,10 +25,10 @@ import { motion } from 'framer-motion';
 // ==============================|| LANDING - HERO PAGE ||============================== //
 
 export default function HeroPage() {
-  const { getQueryParams } = useBuyNowLink();
+  // const { getQueryParams } = useBuyNowLink();
 
   const techBottom = techData.map((item, index) => {
-    const finalUrl = item.url !== '#!' ? `${item.url}${getQueryParams}` : '#!';
+    // const finalUrl = item.url !== '#!' ? `${item.url}${getQueryParams}` : '#!';
     return (
       <Grid key={index} sx={{ minWidth: { xs: 60, md: 90 } }}>
         <motion.div
@@ -37,9 +37,10 @@ export default function HeroPage() {
           transition={{ type: 'spring', stiffness: 150, damping: 30, delay: 0.8 }}
         >
           <Tooltip title={item.tooltipTitle}>
-            <Links component={Link} href={finalUrl} target={item.target}>
+             <CardMedia component="img" image={item.image} sx={{ width: 'auto', height: { xs: 60, md: 'auto' } }} />
+            {/* <Links component={Link} href={finalUrl} target={item.target}>
               <CardMedia component="img" image={item.image} sx={{ width: 'auto', height: { xs: 60, md: 'auto' } }} />
-            </Links>
+            </Links> */}
           </Tooltip>
         </motion.div>
       </Grid>
