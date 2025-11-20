@@ -38,9 +38,6 @@ export default function HeroPage() {
         >
           <Tooltip title={item.tooltipTitle}>
              <CardMedia component="img" image={item.image} sx={{ width: 'auto', height: { xs: 60, md: 'auto' } }} />
-            {/* <Links component={Link} href={finalUrl} target={item.target}>
-              <CardMedia component="img" image={item.image} sx={{ width: 'auto', height: { xs: 60, md: 'auto' } }} />
-            </Links> */}
           </Tooltip>
         </motion.div>
       </Grid>
