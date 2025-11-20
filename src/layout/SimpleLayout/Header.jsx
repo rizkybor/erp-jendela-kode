@@ -23,9 +23,9 @@ import ListItemText from '@mui/material/ListItemText';
 import Stack from '@mui/material/Stack';
 import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+// import TextField from '@mui/material/TextField';
 import Divider from '@mui/material/Divider';
-import Avatar from '@mui/material/Avatar';
+// import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 
 // project-imports
@@ -208,7 +208,7 @@ export default function Header({ layout = 'landing', ...others }) {
     <motion.div variants={panelVariant} initial="hidden" animate="visible" exit="exit">
       <Box
         sx={{
-          minHeight: '100vh',
+          minHeight: '80vh',
           px: 3,
           py: 3,
           display: 'flex',
@@ -224,9 +224,9 @@ export default function Header({ layout = 'landing', ...others }) {
         {/* header row inside mobile panel */}
         <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2}>
           <Stack direction="row" spacing={2} alignItems="center">
-            <Avatar sx={{ width: 40, height: 40, bgcolor: 'primary.main' }}>
+            {/* <Avatar sx={{ width: 40, height: 40, bgcolor: 'primary.main' }}>
               <Logo to="/" />
-            </Avatar>
+            </Avatar> */}
             <Box>
               <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
                 Menu
@@ -243,7 +243,7 @@ export default function Header({ layout = 'landing', ...others }) {
         </Stack>
 
         {/* search */}
-        <Box>
+        {/* <Box>
           <TextField
             fullWidth
             size="small"
@@ -251,7 +251,7 @@ export default function Header({ layout = 'landing', ...others }) {
             InputProps={{ sx: { borderRadius: 2 } }}
             aria-label="Search site pages"
           />
-        </Box>
+        </Box> */}
 
         <Divider />
 
@@ -295,7 +295,7 @@ export default function Header({ layout = 'landing', ...others }) {
               </motion.div>
 
               {/* Dashboard */}
-              <motion.div variants={itemVariant} key="login">
+              {/* <motion.div variants={itemVariant} key="login">
                 <Links style={{ textDecoration: 'none' }} component={Link} href={makeHref('/login')}>
                   <ListItemButton sx={mobileListItemSx(makeHref('/login'))} onClick={drawerToggler(false)}>
                     <ListItemIcon sx={{ minWidth: 36 }}>
@@ -304,7 +304,7 @@ export default function Header({ layout = 'landing', ...others }) {
                     <ListItemText primary="Dashboard" />
                   </ListItemButton>
                 </Links>
-              </motion.div>
+              </motion.div> */}
 
               {/* optional: map menuMaster dynamic items (if available) */}
               {Array.isArray(menuMaster?.items) &&
@@ -340,13 +340,13 @@ export default function Header({ layout = 'landing', ...others }) {
               disableElevation
               sx={{ borderRadius: 2, py: 1.25 }}
             >
-              Get in Touch
+              Login
             </Button>
           </AnimateButton>
 
           <Box sx={{ mt: 1.25, display: 'flex', justifyContent: 'center' }}>
             <Typography variant="caption" color="text.secondary">
-              © {new Date().getFullYear()}
+              © {new Date().getFullYear()} Jendela Kode Indonesia v4.1.0. All Rights Reserved.
             </Typography>
           </Box>
         </Box>
@@ -437,7 +437,7 @@ export default function Header({ layout = 'landing', ...others }) {
                     size="large"
                     variant="contained"
                   >
-                    Get in Touch
+                    Login
                   </Button>
                 </AnimateButton>
               </Box>

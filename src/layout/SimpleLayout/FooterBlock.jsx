@@ -6,7 +6,7 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
-import Tooltip from '@mui/material/Tooltip';
+// import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
@@ -17,8 +17,8 @@ import { motion } from 'framer-motion';
 import Logo from 'components/logo';
 
 // assets - gunakan iconsax yang sudah ada di package.json
-import { Dribbble, Youtube, Message, Call, Location } from '@wandersonalwes/iconsax-react';
-import GithubIcon from '../../../public/assets/third-party/github';
+import { Message, Call, Location } from '@wandersonalwes/iconsax-react';
+// import GithubIcon from '../../../public/assets/third-party/github';
 
 // link - custom style
 const FooterLink = styled(Link)(({ theme }) => ({
@@ -31,13 +31,13 @@ const FooterLink = styled(Link)(({ theme }) => ({
 // ==============================|| LANDING - FOOTER PAGE ||============================== //
 
 export default function FooterBlock({ isFull }) {
-  const linkSX = {
-    color: 'text.secondary',
-    fontWeight: 400,
-    opacity: 0.6,
-    cursor: 'pointer',
-    '&:hover': { opacity: 1 }
-  };
+  // const linkSX = {
+  //   color: 'text.secondary',
+  //   fontWeight: 400,
+  //   opacity: 0.6,
+  //   cursor: 'pointer',
+  //   '&:hover': { opacity: 1 }
+  // };
 
   // --- DATA UNTUK KOLONG FOOTER YANG DIINGINKAN ---
   const quickLinks = [
@@ -47,16 +47,16 @@ export default function FooterBlock({ isFull }) {
   ];
 
   const services = [
-    { label: 'Website Development', link: '/services/website' },
-    { label: 'Mobile App Development', link: '/services/mobile' },
-    { label: 'UI/UX Design', link: '/services/ui-ux' },
-    { label: 'Custom Software', link: '/services/custom-software' }
+    { label: 'Website Development', link: '/' },
+    { label: 'Mobile App Development', link: '/' },
+    { label: 'UI/UX Design', link: '/' },
+    { label: 'Custom Software', link: '/' }
   ];
 
   const contactInfo = [
     { IconComponent: Message, label: 'info@jendelakode.com', href: 'mailto:info@jendelakode.com' },
-    { IconComponent: Call, label: '+62 812 3456 7890', href: 'tel:+6281234567890' },
-    { IconComponent: Location, label: 'Jakarta, Indonesia', href: 'https://www.google.com/maps' }
+    { IconComponent: Call, label: '(+62) 851 2111 0794 - Rizky', href: 'tel:+6285121110794' },
+    { IconComponent: Location, label: 'Jl. Pd. Cabe Raya, Pd. Cabe Udik, Kec. Pamulang, Kota Tangerang Selatan, Banten 15418', href: 'https://www.google.com/maps' }
   ];
   // ------------------------------------------------
 
@@ -126,7 +126,7 @@ export default function FooterBlock({ isFull }) {
                           href={item.link}
                           underline="none"
                           sx={
-                            item.label === 'Mobile App Development'
+                            item.label === 'Mobile App'
                               ? {
                                   color: 'text.secondary',
                                   fontWeight: 400,
@@ -196,15 +196,16 @@ export default function FooterBlock({ isFull }) {
           <Grid container spacing={2} sx={{ alignItems: 'center' }}>
             <Grid size={{ xs: 12, sm: 8 }}>
               <Typography>
-                © All Righ Reserved.{' '}
-                <Link href="https://www.phoenixcoded.net/" target="_blank" underline="none">
+                © {new Date().getFullYear()}{' '}
+                <Link href="https://jendelakode.com/about" target="_blank" underline="none">
                   Jendela Kode Indonesia
                 </Link>
+                {' '} v4.1.0. All Rights Reserved.
               </Typography>
             </Grid>
             <Grid size={{ xs: 12, sm: 4 }}>
               <Grid container spacing={2} sx={{ alignItems: 'center', justifyContent: 'flex-end' }}>
-                <Grid>
+                {/* <Grid>
                   <Tooltip title="Github">
                     <Link
                       href="https://github.com/phoenixcoded"
@@ -239,7 +240,7 @@ export default function FooterBlock({ isFull }) {
                       <Youtube variant="Bold" size={20} />
                     </Link>
                   </Tooltip>
-                </Grid>
+                </Grid> */}
               </Grid>
             </Grid>
           </Grid>
