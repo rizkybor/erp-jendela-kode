@@ -14,7 +14,7 @@ import Box from '@mui/material/Box';
 import { ThemeMode } from 'config';
 
 // icons
-import { Box2, ArrowDown } from '@wandersonalwes/iconsax-react';
+import { Box2 } from '@wandersonalwes/iconsax-react';
 
 // assets
 const figmaLight = '/assets/images/landing/jekoai-light.png';
