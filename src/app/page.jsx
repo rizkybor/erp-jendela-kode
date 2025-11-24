@@ -10,6 +10,7 @@ import SimpleLayout from 'layout/SimpleLayout';
 import Service from 'sections/landing/Service';
 import Portfolio from 'sections/landing/Portfolio';
 import Core from 'sections/landing/Core';
+import AIBlock from 'sections/landing/AIBlock';
 
 // ==============================|| LANDING PAGE ||============================== //
 
@@ -23,6 +24,7 @@ export default function Landing() {
  <div id="our-portfolio">
         <Portfolio />
       </div>
+      <AIBlock />
       <Testimonial />
       <Subscribe />
       <Divider sx={{ borderColor: 'secondary.light' }} />
