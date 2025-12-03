@@ -346,7 +346,7 @@ export default function Header({ layout = 'landing', ...others }) {
 
           <Box sx={{ mt: 1.25, display: 'flex', justifyContent: 'center' }}>
             <Typography variant="caption" color="text.secondary">
-              © {new Date().getFullYear()} Jendela Kode Indonesia v4.1.0. All Rights Reserved.
+              © {new Date().getFullYear()} PT. Jendela Cakra Digital. All Rights Reserved.
             </Typography>
           </Box>
         </Box>
