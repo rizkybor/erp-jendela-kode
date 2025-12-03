@@ -197,10 +197,10 @@ export default function FooterBlock({ isFull }) {
             <Grid size={{ xs: 12, sm: 8 }}>
               <Typography>
                 © {new Date().getFullYear()}{' '}
-                <Link href="https://jendelakode.com/about" target="_blank" underline="none">
-                  Jendela Kode Indonesia
+                <Link href="https://jcdigital.co.id" target="_blank" underline="none">
+                  PT. Jendela Cakra Digital
                 </Link>
-                {' '} v4.1.0. All Rights Reserved.
+                {' '}. All Rights Reserved.
               </Typography>
             </Grid>
             <Grid size={{ xs: 12, sm: 4 }}>
