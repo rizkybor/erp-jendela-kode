@@ -11,6 +11,7 @@ import Service from 'sections/landing/Service';
 import Portfolio from 'sections/landing/Portfolio';
 import Core from 'sections/landing/Core';
 import AIBlock from 'sections/landing/AIBlock';
+import RequestChatBot from 'sections/landing/RequestChatBot';
 
 // ==============================|| LANDING PAGE ||============================== //
 
@@ -25,6 +26,7 @@ export default function Landing() {
         <Portfolio />
       </div>
       <AIBlock />
+      <RequestChatBot />
       <Testimonial />
       <Subscribe />
       <Divider sx={{ borderColor: 'secondary.light' }} />
