@@ -22,11 +22,13 @@ export default function Landing() {
       <Partner />
       <Core />
       <Service />
- <div id="our-portfolio">
+      <div id="our-portfolio">
         <Portfolio />
       </div>
       <AIBlock />
-      <RequestChatBot />
+      <div id="request">
+        <RequestChatBot />
+      </div>
       <Testimonial />
       <Subscribe />
       <Divider sx={{ borderColor: 'secondary.light' }} />

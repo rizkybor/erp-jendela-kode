@@ -40,7 +40,7 @@ export default function FigmaBlock() {
         sx={{ mt: { md: 15, xs: 3 }, mb: { md: 10, xs: 3 } }}
       >
         {/* header */}
-        <Grid item xs={12}>
+        <Grid container alignItems="center" justifyContent="center" spacing={2} sx={{ mt: { md: 15, xs: 2.5 }, mb: { md: 10, xs: 2.5 } }}>
           <Grid container justifyContent="center" sx={{ textAlign: 'center', mb: 4 }}>
             <Grid item xs={12} sm={10} md={6}>
               <Typography variant="h2" sx={{ fontWeight: 800, mb: 1.5 }}>
@@ -55,7 +55,8 @@ export default function FigmaBlock() {
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="center">
                 <Button
                   component={Link}
-                  href="/chatfin-request"
+                  href="https://n8n-tkkitjs8kddj.ceri.sumopod.my.id/form/request"
+                  target="_blank"
                   variant="contained"
                   size="large"
                   startIcon={<Box2 />}
