@@ -29,7 +29,7 @@ export default function Landing() {
       <div id="request">
         <RequestChatBot />
       </div>
-      <Testimonial />
+      {/* <Testimonial /> */}
       <Subscribe />
       <Divider sx={{ borderColor: 'secondary.light' }} />
     </SimpleLayout>
