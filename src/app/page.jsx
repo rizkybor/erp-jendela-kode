@@ -3,7 +3,7 @@ import Divider from '@mui/material/Divider';
 
 // project-imports
 import Hero from 'sections/landing/Hero';
-import Testimonial from 'sections/landing/Testimonial';
+// import Testimonial from 'sections/landing/Testimonial';
 import Partner from 'sections/landing/Partner';
 import Subscribe from 'sections/landing/Subscribe';
 import SimpleLayout from 'layout/SimpleLayout';
