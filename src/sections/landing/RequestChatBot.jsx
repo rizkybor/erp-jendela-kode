@@ -3,7 +3,6 @@
 // material-ui
 import { useTheme } from '@mui/material/styles';
 import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
@@ -11,14 +10,12 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
-import Chip from '@mui/material/Chip';
-import Divider from '@mui/material/Divider';
 
 // project import
 import { ThemeMode } from 'config';
 
 // icons
-import { Box2, Wallet, Graph, Clock } from '@wandersonalwes/iconsax-react';
+import { Box2 } from '@wandersonalwes/iconsax-react';
 
 // assets
 const figmaLight = '/assets/images/landing/chatDark.png';
