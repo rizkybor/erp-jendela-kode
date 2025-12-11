@@ -18,8 +18,8 @@ import { ThemeMode } from 'config';
 import { Box2 } from '@wandersonalwes/iconsax-react';
 
 // assets
-const figmaLight = '/assets/images/landing/chatDark.png';
-const figmaDark = '/assets/images/landing/chatLight.png';
+const figmaLight = '/assets/images/landing/dark-chatbot.png';
+const figmaDark = '/assets/images/landing/light-chatbot.png';
 
 // =============================|| LANDING - CHATBOT FINANCIAL TRACKER (Clean) ||============================= //
 
@@ -29,13 +29,7 @@ export default function FigmaBlock() {
 
   return (
     <Container>
-      <Grid
-        container
-        spacing={2}
-        alignItems="center"
-        justifyContent="center"
-        sx={{ mt: { md: 10, xs: 10 }, mb: { md: 10, xs: 3 } }}
-      >
+      <Grid container spacing={2} alignItems="center" justifyContent="center" sx={{ mt: { md: 10, xs: 10 }, mb: { md: 10, xs: 3 } }}>
         {/* header */}
         <Grid container alignItems="center" justifyContent="center" spacing={2} sx={{ mt: { md: 15, xs: 2.5 }, mb: { md: 3, xs: 2.5 } }}>
           <Grid container justifyContent="center" sx={{ textAlign: 'center', mb: 2 }}>
@@ -45,8 +39,7 @@ export default function FigmaBlock() {
               </Typography>
 
               <Typography variant="body1" color="text.secondary" sx={{ mb: 2, lineHeight: 1.6 }}>
-                Pantau pengeluaran, atur anggaran, dan dapatkan insight secara percakapan. Mudah dipakai, aman, dan
-                cocok untuk individu maupun tim kecil.
+               Monitor expenses, manage budgets, and gain insights conversationally. Easy to use, secure, and suitable for individuals and small teams. <br/>Powered by GPT-4.0 for smarter analysis and n8n automation integration to accelerate workflows and automate data processing.
               </Typography>
 
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="center">
