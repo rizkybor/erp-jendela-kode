@@ -39,7 +39,7 @@ const portfolioData = [
   {
     id: 4,
     title: 'Recruitment BUMN',
-    description: 'A large-scale, enterprise Web Development project serving as the official Centralized Recruitment Portal for Badan Usaha Milik Negara (BUMN). The platform manages the entire hiring process, from candidate registration and application submission to assessment scheduling and announcement of results, ensuring a standardized, transparent, and efficient recruitment experience across numerous state-owned companies.',
+    description: 'A large-scale, enterprise Web Development project serving as the official Centralized Recruitment Portal for Badan Usaha Milik Negara (BUMN).',
     image: '/assets/images/landing/porto-hcis.png',
     category: 'CRM & Recruitment Website',
     link: 'https://hcis.bumn.go.id/'
@@ -55,7 +55,7 @@ const portfolioData = [
   {
     id: 6,
     title: 'ERP Billing',
-    description: 'A specialized ERP System designed to centralize and automate financial operations. Key functionalities include invoice generation, detailed vendor data management, and comprehensive transaction history reconciliation.',
+    description: 'A specialized ERP System designed to centralize and automate financial operations.',
     image: '/assets/images/landing/porto-pb.png',
     category: 'Erp System',
     link: 'https://primebilling.id/login'
