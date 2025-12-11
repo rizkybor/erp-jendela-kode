@@ -9,7 +9,6 @@ import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
 
 // project import
 import { ThemeMode } from 'config';
