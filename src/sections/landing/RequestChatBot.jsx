@@ -29,20 +29,25 @@ export default function FigmaBlock() {
 
   return (
     <Container>
-      <Grid container spacing={2} alignItems="center" justifyContent="center" sx={{ mt: { md: 10, xs: 10 }, mb: { md: 10, xs: 3 } }}>
-        {/* header */}
-        <Grid container alignItems="center" justifyContent="center" spacing={2} sx={{ mt: { md: 15, xs: 2.5 }, mb: { md: 3, xs: 2.5 } }}>
-          <Grid container justifyContent="center" sx={{ textAlign: 'center', mb: 2 }}>
-            <Grid item xs={12} sm={10} md={6}>
-              <Typography variant="h2" sx={{ fontWeight: 800 }}>
-                BangLaporin — Chatbot Financial Tracker
-              </Typography>
+      <Grid container alignItems="center" justifyContent="center" spacing={2} sx={{ mt: { md: 15, xs: 2.5 }, mb: { md: 3, xs: 2.5 } }}>
+        <Grid container justifyContent="center" sx={{ textAlign: 'center', mb: 4 }}>
+          <Grid size={{ sm: 10, md: 6 }}>
+            <Grid container spacing={1} justifyContent="center">
+              <Grid size={12}>
+                <Typography variant="h2" sx={{ fontWeight: 800 }}>
+                  BangLaporin — Chatbot Financial Tracker
+                </Typography>
+              </Grid>
 
-              <Typography variant="body1" color="text.secondary" sx={{ mb: 2, lineHeight: 1.6 }}>
-               Monitor expenses, manage budgets, and gain insights conversationally. Easy to use, secure, and suitable for individuals and small teams. <br/>Powered by GPT-4.0 for smarter analysis and n8n automation integration to accelerate workflows and automate data processing.
-              </Typography>
+              <Grid size={12} sx={{ mb: 2 }}>
+                <Typography variant="body1" color="text.secondary" sx={{ mb: 2, lineHeight: 1.6 }}>
+                  Monitor expenses, manage budgets, and gain insights conversationally. Easy to use, secure, and suitable for individuals
+                  and small teams. Powered by GPT-4.0 for smarter analysis and n8n automation integration to accelerate workflows and
+                  automate data processing.
+                </Typography>
+              </Grid>
 
-              <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="center">
+              <Grid size={12}>
                 <Button
                   component={Link}
                   href="https://n8n-tkkitjs8kddj.ceri.sumopod.my.id/form/request"
@@ -53,19 +58,15 @@ export default function FigmaBlock() {
                 >
                   Request BangLaporin
                 </Button>
-
-                {/* <Button component={Link} href="#features" variant="outlined" size="large">
-                  Pelajari fitur
-                </Button> */}
-              </Stack>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
 
         {/* main two-column area */}
         <Grid size={{ xs: 12, sm: 9 }}>
-          <Box sx={{ position: 'relative', mb: 1 }}>
-            <CardMedia component="img" src={FigmaImg} sx={{ width: 1, m: '0 auto', borderRadius: 6 }} />
+          <Box sx={{ position: 'relative', mb: 3 }}>
+            <CardMedia component="img" src={FigmaImg} sx={{ width: 1, m: '0 auto', borderRadius: 4 }} />
           </Box>
         </Grid>
       </Grid>
