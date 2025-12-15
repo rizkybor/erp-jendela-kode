@@ -28,7 +28,7 @@ export default function FigmaBlock() {
 
   return (
     <Container>
-      <Grid container alignItems="center" justifyContent="center" spacing={2} sx={{ mt: { md: 15, xs: 2.5 }, mb: { md: 3, xs: 2.5 } }}>
+      <Grid container alignItems="center" justifyContent="center" spacing={2} sx={{ mt: { md: 15, xs: 5 }, mb: { md: 3, xs: 10 } }}>
         <Grid container justifyContent="center" sx={{ textAlign: 'center', mb: 4 }}>
           <Grid size={{ sm: 10, md: 6 }}>
             <Grid container spacing={1} justifyContent="center">
@@ -61,7 +61,7 @@ export default function FigmaBlock() {
                     }}
                   >
                     <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 1 }}>
-                      Free 7-Day Trial Includes
+                      Free 14-Day Trial Includes
                     </Typography>
 
                     <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.9 }}>
