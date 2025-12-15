@@ -29,7 +29,7 @@ export default function FigmaBlock() {
 
   return (
     <Container>
-      <Grid container alignItems="center" justifyContent="center" spacing={2} sx={{ mt: { md: 15, xs: 2.5 }, mb: { md: 10, xs: 2.5 } }}>
+      <Grid container alignItems="center" justifyContent="center" spacing={2} sx={{ mt: { md: 15, xs: 10 }, mb: { md: 10, xs: 5 } }}>
         <Grid size={12}>
           <Grid container spacing={1} justifyContent="center" sx={{ mb: 4, textAlign: 'center' }}>
             <Grid size={{ sm: 10, md: 6 }}>
