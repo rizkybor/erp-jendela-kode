@@ -38,12 +38,41 @@ export default function FigmaBlock() {
                 </Typography>
               </Grid>
 
-              <Grid size={12} sx={{ mb: 2 }}>
-                <Typography variant="body1" color="text.secondary" sx={{ mb: 2, lineHeight: 1.6 }}>
-                  Monitor expenses, manage budgets, and gain insights conversationally. Easy to use, secure, and suitable for individuals
-                  and small teams. Powered by GPT-4.0 for smarter analysis and n8n automation integration to accelerate workflows and
-                  automate data processing.
-                </Typography>
+              <Grid container spacing={3} alignItems="stretch" sx={{ mb: 3 }}>
+                {/* LEFT: Description */}
+                <Grid size={{ xs: 12, md: 5 }}>
+                  <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.7 }}>
+                    Monitor expenses, manage budgets, and gain insights conversationally. Easy to use, secure, and suitable for individuals
+                    and small teams. Powered by GPT-4.0 for smarter analysis and n8n automation integration to accelerate workflows and
+                    automate data processing.
+                  </Typography>
+                </Grid>
+
+                {/* RIGHT: Trial Features */}
+                <Grid size={{ xs: 12, md: 7 }}>
+                  <Box
+                    sx={{
+                      height: '100%',
+                      textAlign: 'left',
+                      backgroundColor: theme.palette.mode === ThemeMode.DARK ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.04)',
+                      borderRadius: 3,
+                      px: 3,
+                      py: 2
+                    }}
+                  >
+                    <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 1 }}>
+                      Free 7-Day Trial Includes
+                    </Typography>
+
+                    <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.9 }}>
+                      • Dedicated VPS Server (isolated environment) <br />
+                      • AI Agent for expense recording & spending analysis <br />
+                      • 📸 Upload shopping receipts (automatic OCR) <br />
+                      • ✍️ Manual purchase input via chat <br />
+                      • 📊 Real-time expense reports <br />• 🗑️ Manage & delete expense records
+                    </Typography>
+                  </Box>
+                </Grid>
               </Grid>
 
               <Grid size={12}>
