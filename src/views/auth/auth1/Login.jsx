@@ -35,7 +35,7 @@ export default function LoginPage() {
         </Grid>
         <Grid size={12}>
           <Grid container spacing={1}>
-            <Grid size={12}>
+            {/* <Grid size={12}>
               <AuthSocButton>
                 <CardMedia component="img" src={imgFacebook} alt="Facebook" sx={{ my: 0, mx: 1.25, width: 'auto' }} /> Sign In with Facebook
               </AuthSocButton>
@@ -44,7 +44,7 @@ export default function LoginPage() {
               <AuthSocButton>
                 <CardMedia component="img" src={imgTwitter} alt="Facebook" sx={{ my: 0, mx: 1.25, width: 'auto' }} /> Sign In with Twitter
               </AuthSocButton>
-            </Grid>
+            </Grid> */}
             <Grid size={12}>
               <AuthSocButton>
                 <CardMedia component="img" src={imgGoogle} alt="Facebook" sx={{ my: 0, mx: 1.25, width: 'auto' }} /> Sign In with Google
