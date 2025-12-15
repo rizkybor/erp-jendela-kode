@@ -19,7 +19,7 @@ const servicesData = [
   {
     icon: '🌐',
     title: 'Email',
-    description: 'info@jendelakode.com | jeko.idn@gmail.com'
+    description: 'jeko.idn@gmail.com | jeko.idn@gmail.com'
   },
   {
     icon: '📱',

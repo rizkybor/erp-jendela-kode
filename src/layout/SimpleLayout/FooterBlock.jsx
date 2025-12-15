@@ -54,7 +54,7 @@ export default function FooterBlock({ isFull }) {
   ];
 
   const contactInfo = [
-    { IconComponent: Message, label: 'info@jendelakode.com', href: 'mailto:info@jendelakode.com' },
+    { IconComponent: Message, label: 'jeko.idn@gmail.com', href: 'mailto:jeko.idn@gmail.com' },
     { IconComponent: Call, label: '(+62) 851 2111 0794 - Rizky', href: 'tel:+6285121110794' },
     { IconComponent: Location, label: 'Jl. Pd. Cabe Raya, Pd. Cabe Udik, Kec. Pamulang, Kota Tangerang Selatan, Banten 15418', href: 'https://www.google.com/maps' }
   ];
