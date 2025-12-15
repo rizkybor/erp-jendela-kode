@@ -4,7 +4,7 @@ import Divider from '@mui/material/Divider';
 // project-imports
 import Hero from 'sections/landing/Hero';
 // import Testimonial from 'sections/landing/Testimonial';
-import Partner from 'sections/landing/Partner';
+// import Partner from 'sections/landing/Partner';
 import Subscribe from 'sections/landing/Subscribe';
 import SimpleLayout from 'layout/SimpleLayout';
 import Service from 'sections/landing/Service';
@@ -19,7 +19,7 @@ export default function Landing() {
   return (
     <SimpleLayout>
       <Hero />
-      <Partner />
+      {/* <Partner /> */}
       <Core />
       <Service />
       <div id="our-portfolio">
