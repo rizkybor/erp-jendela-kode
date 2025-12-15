@@ -57,13 +57,15 @@ export default function AuthLogin({ providers, csrfToken }) {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
-
+//  email: 'info@phoenixcoded.co',
+//           password: '123456',
+//           submit: null
   return (
     <>
       <Formik
         initialValues={{
-          email: 'info@phoenixcoded.co',
-          password: '123456',
+          email: '',
+          password: '',
           submit: null
         }}
         validationSchema={Yup.object().shape({
@@ -188,7 +190,7 @@ export default function AuthLogin({ providers, csrfToken }) {
         )}
       </Formik>
 
-      {providers && (
+      {/* {providers && (
         <Stack
           direction="row"
           spacing={{ xs: 1, sm: 2 }}
@@ -247,7 +249,7 @@ export default function AuthLogin({ providers, csrfToken }) {
         <Box sx={{ mt: 3 }}>
           <FirebaseSocial />
         </Box>
-      )}
+      )} */}
     </>
   );
 }
