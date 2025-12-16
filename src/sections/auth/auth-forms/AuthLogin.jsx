@@ -4,14 +4,15 @@ import { useState } from 'react';
 
 // next
 import Link from 'next/link';
-import Image from 'next/legacy/image';
 import { useSession, signIn } from 'next-auth/react';
+// import Image from 'next/legacy/image';
 
 // material-ui
-import useMediaQuery from '@mui/material/useMediaQuery';
+// import useMediaQuery from '@mui/material/useMediaQuery';
+// import Divider from '@mui/material/Divider';
+// import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
-import Divider from '@mui/material/Divider';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Grid from '@mui/material/Grid';
@@ -21,7 +22,6 @@ import Links from '@mui/material/Link';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
-import Box from '@mui/material/Box';
 
 // third-party
 import * as Yup from 'yup';
@@ -30,22 +30,22 @@ import { Formik } from 'formik';
 // project-imports
 import IconButton from 'components/@extended/IconButton';
 import AnimateButton from 'components/@extended/AnimateButton';
-import FirebaseSocial from './FirebaseSocial';
 import { fetcher } from 'utils/axios';
-import { APP_DEFAULT_PATH } from 'config';
+// import FirebaseSocial from './FirebaseSocial';
+// import { APP_DEFAULT_PATH } from 'config';
 
 // assets
 import { Eye, EyeSlash } from '@wandersonalwes/iconsax-react';
 import { preload } from 'swr';
 
-const Auth0 = '/assets/images/icons/auth0.svg';
-const Cognito = '/assets/images/icons/aws-cognito.svg';
-const Google = '/assets/images/icons/google.svg';
+// const Auth0 = '/assets/images/icons/auth0.svg';
+// const Cognito = '/assets/images/icons/aws-cognito.svg';
+// const Google = '/assets/images/icons/google.svg';
 
 // ============================|| JWT - LOGIN ||============================ //
 
 export default function AuthLogin({ providers, csrfToken }) {
-  const downSM = useMediaQuery((theme) => theme.breakpoints.down('sm'));
+  // const downSM = useMediaQuery((theme) => theme.breakpoints.down('sm'));
 
   const [checked, setChecked] = useState(false);
   const { data: session } = useSession();
