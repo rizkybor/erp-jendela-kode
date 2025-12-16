@@ -18,8 +18,8 @@ import AuthWrapper from 'sections/auth/AuthWrapper';
 import AuthLogin from 'sections/auth/auth-forms/AuthLogin';
 
 // assets
-const imgFacebook = '/assets/images/auth/facebook.svg';
-const imgTwitter = '/assets/images/auth/twitter.svg';
+// const imgFacebook = '/assets/images/auth/facebook.svg';
+// const imgTwitter = '/assets/images/auth/twitter.svg';
 const imgGoogle = '/assets/images/auth/google.svg';
 
 // ================================|| LOGIN ||================================ //
