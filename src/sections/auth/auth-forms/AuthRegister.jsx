@@ -4,15 +4,15 @@ import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 
 // next
-import Image from 'next/legacy/image';
+// import Image from 'next/legacy/image';
+// import { useRouter } from 'next/navigation';
 import NextLink from 'next/link';
-import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 
 // material-ui
-import useMediaQuery from '@mui/material/useMediaQuery';
+// import useMediaQuery from '@mui/material/useMediaQuery';
+// import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
-import Divider from '@mui/material/Divider';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import Grid from '@mui/material/Grid';
@@ -28,25 +28,25 @@ import * as Yup from 'yup';
 import { Formik } from 'formik';
 
 // project-imports
-import FirebaseSocial from './FirebaseSocial';
+// import FirebaseSocial from './FirebaseSocial';
+// import { APP_DEFAULT_PATH } from 'config';
 import IconButton from 'components/@extended/IconButton';
 import AnimateButton from 'components/@extended/AnimateButton';
-import { APP_DEFAULT_PATH } from 'config';
 import { strengthColor, strengthIndicator } from 'utils/password-strength';
 
 // assets
 import { Eye, EyeSlash } from '@wandersonalwes/iconsax-react';
 
-const Auth0 = '/assets/images/icons/auth0.svg';
-const Cognito = '/assets/images/icons/aws-cognito.svg';
-const Google = '/assets/images/icons/google.svg';
+// const Auth0 = '/assets/images/icons/auth0.svg';
+// const Cognito = '/assets/images/icons/aws-cognito.svg';
+// const Google = '/assets/images/icons/google.svg';
 
 // ============================|| JWT - REGISTER ||============================ //
 
 export default function AuthRegister({ providers, csrfToken }) {
-  const router = useRouter();
+  // const router = useRouter();
 
-  const downSM = useMediaQuery((theme) => theme.breakpoints.down('sm'));
+  // const downSM = useMediaQuery((theme) => theme.breakpoints.down('sm'));
 
   const [level, setLevel] = useState();
   const [showPassword, setShowPassword] = useState(false);
@@ -265,7 +265,7 @@ export default function AuthRegister({ providers, csrfToken }) {
           </form>
         )}
       </Formik>
-      {providers && (
+      {/* {providers && (
         <Stack
           direction="row"
           spacing={{ xs: 1, sm: 2 }}
@@ -323,7 +323,7 @@ export default function AuthRegister({ providers, csrfToken }) {
         <Box sx={{ mt: 3 }}>
           <FirebaseSocial />
         </Box>
-      )}
+      )} */}
     </>
   );
 }
