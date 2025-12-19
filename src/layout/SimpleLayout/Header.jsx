@@ -194,7 +194,8 @@ export default function Header({ layout = 'landing', ...others }) {
     display: 'flex',
     alignItems: 'center',
     ...(isActive(href) && {
-      background: (theme) => `linear-gradient(90deg, ${alpha(theme.palette.primary.main, 0.12)} 0%, ${alpha(theme.palette.primary.light, 0.06)} 100%)`,
+      background: (theme) =>
+        `linear-gradient(90deg, ${alpha(theme.palette.primary.main, 0.12)} 0%, ${alpha(theme.palette.primary.light, 0.06)} 100%)`,
       transform: 'translateX(6px)'
     }),
     '& .MuiListItemText-primary': {
@@ -331,9 +332,10 @@ export default function Header({ layout = 'landing', ...others }) {
           <AnimateButton>
             <Button
               fullWidth
-              component={Links}
-              href={makeHref('/auth/login')}
+              component="a"
+              href="https://backoffice.jcdigital.co.id/auth/login"
               target="_blank"
+              rel="noopener noreferrer"
               startIcon={<ExportSquare />}
               variant="contained"
               size="large"
@@ -424,13 +426,13 @@ export default function Header({ layout = 'landing', ...others }) {
               >
                 Contact
               </Links>
-
               <Box sx={{ display: 'inline-block' }}>
                 <AnimateButton>
                   <Button
-                    component={Links}
-                    href={makeHref('/auth/login')}
+                    component="a"
+                    href="https://backoffice.jcdigital.co.id/auth/login"
                     target="_blank"
+                    rel="noopener noreferrer"
                     disableElevation
                     startIcon={<ExportSquare />}
                     color="primary"
